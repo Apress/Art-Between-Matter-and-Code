@@ -75,5 +75,16 @@ By following these approaches, artists and scholars can understand how contempor
 
 ---
 
-## **Repository Structure (Suggested)**
+## **Repository Structure**
+├── README.md                # Project overview, installation and usage instructions
+├── /src/                    # Source files (code, scripts, or digital processing tools)
+├── /data/                   # Raw and processed datasets (3D scans, meshes, textures)
+├── /docs/                   # Documentation, references, papers, notes
+├── /media/                  # Images, videos, renders, animations of the artworks
+├── /models/                 # 3D models (STL, OBJ, PLY, glTF)
+├── /research/               # Research materials, sketches, conceptual maps
+├── /notebooks/              # Jupyter or Colab notebooks for experiments (optional)
+├── /examples/               # Example outputs, sample inputs, test files
+├── /tests/                  # Unit and integration tests (if needed)
+└── LICENSE                  # License file (optional but recommended)
 
