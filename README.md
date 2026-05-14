@@ -1,6 +1,8 @@
 # **Art Between Matter and Code**
 ### **Bridging Classical Art and Digital Frontiers**
 
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+
 **Author:**  **Gianpiero Moioli**  
 Department of Visual Arts, School of Sculpture  
 Accademia di Belle Arti di Brera, Milan, Italy  
@@ -115,6 +117,10 @@ Chapter_X/
 
 ## **License**
 
-Code and scripts: [MIT License](LICENSE)  
-Book text and images: © Gianpiero Moioli / Apress — all rights reserved.
+Original materials (Blender files, SVG diagrams, renders, documents) are released under  
+[Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](LICENSE)  
+© 2025 Gianpiero Moioli
+
+Third-party assets retain their respective licenses. See individual `license.txt` files where present.  
+Book text and figures: © Gianpiero Moioli / Apress (Springer Nature) — all rights reserved.
 
