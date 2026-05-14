@@ -68,15 +68,53 @@ By following these approaches, artists and scholars can understand how contempor
 ---
 
 ## **Repository Structure**
-- ├── README.md                # Project overview, installation and usage instructions
-- ├── /src/                    # Source files (code, scripts, or digital processing tools)
-- ├── /data/                   # Raw and processed datasets (3D scans, meshes, textures)
-- ├── /docs/                   # Documentation, references, papers, notes
-- ├── /media/                  # Images, videos, renders, animations of the artworks
-- ├── /models/                 # 3D models (STL, OBJ, PLY, glTF)
-- ├── /research/               # Research materials, sketches, conceptual maps
-- ├── /notebooks/              # Jupyter or Colab notebooks for experiments (optional)
-- ├── /examples/               # Example outputs, sample inputs, test files
-- ├── /tests/                  # Unit and integration tests (if needed)
-- └── LICENSE                  # License file (optional but recommended)
+
+Materials are organized by chapter. Each chapter folder follows this layout:
+
+```
+Chapter_X/
+├── README.md       ← chapter overview and file descriptions
+├── images/         ← reference images, artworks, screenshots
+├── models/         ← 3D files (.blend, .obj, .stl)
+├── scripts/        ← Python / Blender scripts
+├── docs/           ← PDF and supplementary documents
+└── media/          ← videos, animations, renders
+```
+
+| Chapter | Folder | Title |
+|---------|--------|-------|
+| 1 | [Chapter_1](Chapter_1/) | Ideas, Materials, Technologies and Aesthetics |
+| 2 | [Chapter_2](Chapter_2/) | Modeling as Creative Gesture |
+| 3 | [Chapter_3](Chapter_3/) | Procedurality and Artificial Growth |
+| 4 | [Chapter_4](Chapter_4/) | Uniqueness, Identity, and Digital Certification |
+| 5 | [Chapter_5](Chapter_5/) | States of Transformation |
+| 6 | [Chapter_6](Chapter_6/) | From Virtuality to Matter |
+| 7 | [Chapter_7](Chapter_7/) | Artificial Intelligence as a Creative Tool |
+| 8 | [Chapter_8](Chapter_8/) | Landscapes and Forces |
+| 9 | [Chapter_9](Chapter_9/) | The Metaverse as an Exhibition Space |
+| 10 | [Chapter_10](Chapter_10/) | Fields of Immersion |
+
+---
+
+## **How to use the Blender files**
+
+1. Install [Blender 4.x](https://www.blender.org/download/)
+2. Open `.blend` files from **File > Open**
+3. Python scripts in `scripts/` can be run from Blender's **Scripting** workspace or from the terminal:
+   ```bash
+   blender --background --python script.py
+   ```
+
+---
+
+## **Publisher**
+
+[Apress / Springer](https://link.springer.com/book/10.1007/979-8-8688-2376-3)
+
+---
+
+## **License**
+
+Code and scripts: [MIT License](LICENSE)  
+Book text and images: © Gianpiero Moioli / Apress — all rights reserved.
 
