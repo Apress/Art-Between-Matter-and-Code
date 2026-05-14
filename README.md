@@ -100,7 +100,7 @@ Chapter_X/
 
 ## **How to use the Blender files**
 
-1. Install [Blender 4.x](https://www.blender.org/download/)
+1. Install [Blender 5.x](https://www.blender.org/download/)
 2. Open `.blend` files from **File > Open**
 3. Python scripts in `scripts/` can be run from Blender's **Scripting** workspace or from the terminal:
    ```bash

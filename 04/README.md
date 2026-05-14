@@ -14,5 +14,5 @@
 
 ## How to use
 
-- Blender files require **Blender 4.x** or later.
+- Blender files require **Blender 5.x** or later.
 - Open scripts in Blender's Text Editor or run from the terminal.

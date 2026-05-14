@@ -81,8 +81,8 @@
 
 | Script | Launcher | Runs in | Description |
 |--------|----------|---------|-------------|
-| `fontana_cut.py` | `run_fontana_cut.bat` | Blender 4.x | Procedural boolean cuts on a plane — Fontana's *Concetto Spaziale* as parametric operation. Parameters: `NUM_CUTS`, `CUT_ANGLE`, `SPACING`. |
-| `parametric_space.py` | `run_parametric_space.bat` | Blender 4.x | Builds a deformed spatial grid from a field equation. Companion to `fig_01_spazialismo_fontana.blend`. Profiles: `radial`, `linear`, `turbulent`. |
+| `fontana_cut.py` | `run_fontana_cut.bat` | Blender 5.x | Procedural boolean cuts on a plane — Fontana's *Concetto Spaziale* as parametric operation. Parameters: `NUM_CUTS`, `CUT_ANGLE`, `SPACING`. |
+| `parametric_space.py` | `run_parametric_space.bat` | Blender 5.x | Builds a deformed spatial grid from a field equation. Companion to `fig_01_spazialismo_fontana.blend`. Profiles: `radial`, `linear`, `turbulent`. |
 | `aura_transition.py` | `run_aura_transition.bat` | Python 3 (no deps) | Generates the aura/reproducibility diagram as SVG — pure Python, no extra libraries. Opens in browser automatically. |
 
 ## Models (`models/`)

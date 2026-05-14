@@ -14,5 +14,5 @@
 
 ## How to use
 
-- Blender files require **Blender 4.x** or later.
+- Blender files require **Blender 5.x** or later.
 - Watch `media/Procedural_Variations.mp4` for a visual overview of the procedural workflow.

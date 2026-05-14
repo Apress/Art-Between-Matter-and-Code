@@ -22,7 +22,7 @@ Conceptual mapping:
     SOLIDIFY        → thicken the surface (for 3D printing / fabrication)
 
 Usage:
-    Blender 4.x → Scripting workspace → Run Script (Alt+P)
+    Blender 5.x → Scripting workspace → Run Script (Alt+P)
     or: blender --background my_scene.blend --python parametric_space.py
 
     To use with the existing Spazio.blend:
