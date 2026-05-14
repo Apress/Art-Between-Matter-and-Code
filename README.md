@@ -85,16 +85,16 @@ Chapter_X/
 
 | Chapter | Folder | Title |
 |---------|--------|-------|
-| 1 | [Chapter_1](Chapter_1/) | Ideas, Materials, Technologies and Aesthetics |
-| 2 | [Chapter_2](Chapter_2/) | Modeling as Creative Gesture |
-| 3 | [Chapter_3](Chapter_3/) | Procedurality and Artificial Growth |
-| 4 | [Chapter_4](Chapter_4/) | Uniqueness, Identity, and Digital Certification |
-| 5 | [Chapter_5](Chapter_5/) | States of Transformation |
-| 6 | [Chapter_6](Chapter_6/) | From Virtuality to Matter |
-| 7 | [Chapter_7](Chapter_7/) | Artificial Intelligence as a Creative Tool |
-| 8 | [Chapter_8](Chapter_8/) | Landscapes and Forces |
-| 9 | [Chapter_9](Chapter_9/) | The Metaverse as an Exhibition Space |
-| 10 | [Chapter_10](Chapter_10/) | Fields of Immersion |
+| 1 | [01](01/) | Ideas, Materials, Technologies and Aesthetics |
+| 2 | [02](02/) | Modeling as Creative Gesture |
+| 3 | [03](03/) | Procedurality and Artificial Growth |
+| 4 | [04](04/) | Uniqueness, Identity, and Digital Certification |
+| 5 | [05](05/) | States of Transformation |
+| 6 | [06](06/) | From Virtuality to Matter |
+| 7 | [07](07/) | Artificial Intelligence as a Creative Tool |
+| 8 | [08](08/) | Landscapes and Forces |
+| 9 | [09](09/) | The Metaverse as an Exhibition Space |
+| 10 | [10](10/) | Fields of Immersion |
 
 ---
 

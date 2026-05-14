@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="500px"
+   version="1.1"
+   width="800px"
+   id="svg17"
+   sodipodi:docname="006_interactive_xr_improved.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   inkscape:export-filename="006_interactive_xr_improved.png"
+   inkscape:export-xdpi="344.75137"
+   inkscape:export-ydpi="344.75137"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview17"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.627"
+     inkscape:cx="431.41946"
+     inkscape:cy="51.834131"
+     inkscape:window-width="1600"
+     inkscape:window-height="829"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg17" />
+  <defs
+     id="defs1">
+    <marker
+       id="id12"
+       markerHeight="10"
+       markerWidth="10"
+       orient="auto"
+       refX="5"
+       refY="5">
+      <path
+         d="M0,0 L10,5 L0,10 z"
+         fill="#222"
+         id="path1" />
+    </marker>
+  </defs>
+  <text
+     fill="#222222"
+     font-family="Arial"
+     font-size="20px"
+     font-weight="bold"
+     text-anchor="middle"
+     x="50%"
+     y="40"
+     id="text1"
+     style="display:none">Interactive Installations &amp; Immersive XR Environments</text>
+  <rect
+     fill="#fff6e6"
+     height="250"
+     rx="12"
+     ry="12"
+     stroke="#ff9f1c"
+     width="300"
+     x="40"
+     y="80"
+     id="rect1"
+     style="fill:#e6e6e6;stroke-width:3;stroke-dasharray:none;stroke:#000000;stroke-opacity:1" />
+  <text
+     fill="#cc6f00"
+     font-family="Arial"
+     font-size="16px"
+     font-weight="bold"
+     text-anchor="middle"
+     x="190.0"
+     y="105"
+     id="text2"
+     style="font-size:18.66666667px;fill:#000000">Interactive Installations</text>
+  <text
+     fill="#555"
+     font-family="Arial"
+     font-size="12px"
+     text-anchor="middle"
+     x="190.0"
+     y="130"
+     id="text3"
+     style="font-size:16px;fill:#1a1a1a;-inkscape-font-specification:'Arial Bold';font-family:Arial;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">Sensors + real-time data + code</text>
+  <text
+     fill="#777"
+     font-family="Arial"
+     font-size="11px"
+     font-style="italic"
+     text-anchor="middle"
+     x="190.0"
+     y="145"
+     id="text4"
+     style="font-size:13.33333333px;fill:#1a1a1a">TouchDesigner, Arduino systems</text>
+  <rect
+     fill="#ffcb77"
+     height="60"
+     rx="4"
+     stroke="#cc6f00"
+     width="60"
+     x="66"
+     y="200"
+     id="rect4" />
+  <text
+     fill="#774400"
+     font-family="Arial"
+     font-size="11px"
+     text-anchor="middle"
+     x="96"
+     y="280"
+     id="text5"
+     style="font-size:12px">Output</text>
+  <circle
+     cx="282"
+     cy="230"
+     fill="#ffd4a3"
+     r="30"
+     stroke="#cc6f00"
+     id="circle5" />
+  <text
+     fill="#774400"
+     font-family="Arial"
+     font-size="11px"
+     text-anchor="middle"
+     x="282"
+     y="280"
+     id="text6"
+     style="font-size:12px">User</text>
+  <line
+     marker-end="url(#id12)"
+     stroke="#333"
+     stroke-width="1.5"
+     x1="160"
+     x2="210"
+     y1="230"
+     y2="230"
+     id="line6" />
+  <text
+     fill="#333"
+     font-family="Arial"
+     font-size="10px"
+     text-anchor="middle"
+     x="185"
+     y="220"
+     id="text7"
+     style="font-size:12px">Interaction</text>
+  <rect
+     fill="#f0f6ff"
+     height="250"
+     rx="12"
+     ry="12"
+     stroke="#3a86ff"
+     width="300"
+     x="460"
+     y="80"
+     id="rect7"
+     style="stroke:#000000;stroke-opacity:1;stroke-width:3;stroke-dasharray:none;fill:#e6e6e6" />
+  <text
+     fill="#1e5fd1"
+     font-family="Arial"
+     font-size="16px"
+     font-weight="bold"
+     text-anchor="middle"
+     x="610.0"
+     y="105"
+     id="text8"
+     style="font-size:18.66666667px;fill:#000000">Immersive XR Environments</text>
+  <text
+     fill="#555"
+     font-family="Arial"
+     font-size="12px"
+     text-anchor="middle"
+     x="610.0"
+     y="130"
+     id="text9"
+     style="font-size:16px;-inkscape-font-specification:'Arial Bold';font-family:Arial;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;fill:#1a1a1a">VR / AR / MR spaces</text>
+  <text
+     fill="#777"
+     font-family="Arial"
+     font-size="11px"
+     font-style="italic"
+     text-anchor="middle"
+     x="610.0"
+     y="145"
+     id="text10"
+     style="font-size:13.33333333px">Unity, Unreal, Spatial</text>
+  <circle
+     cx="530"
+     cy="230"
+     fill="#b8f2e6"
+     r="20"
+     stroke="#2d6a4f"
+     id="circle10" />
+  <text
+     fill="#2d6a4f"
+     font-family="Arial"
+     font-size="10px"
+     text-anchor="middle"
+     x="530"
+     y="270"
+     id="text11"
+     style="font-size:12px">Virtual Obj</text>
+  <rect
+     fill="#9bd1ff"
+     height="40"
+     stroke="#1e5fd1"
+     width="40"
+     x="590"
+     y="210"
+     id="rect11" />
+  <text
+     fill="#1e5fd1"
+     font-family="Arial"
+     font-size="10px"
+     text-anchor="middle"
+     x="610"
+     y="270"
+     id="text12"
+     style="font-size:12px">UI Panel</text>
+  <circle
+     cx="688"
+     cy="230"
+     fill="#ffb3b3"
+     r="20"
+     stroke="#c9184a"
+     id="circle12" />
+  <text
+     fill="#c9184a"
+     font-family="Arial"
+     font-size="10px"
+     text-anchor="middle"
+     x="688"
+     y="270"
+     id="text13"
+     style="font-size:12px">User Av.</text>
+  <path
+     d="m 340,230 c 20,0 100,0 120,0"
+     fill="none"
+     marker-end="url(#id12)"
+     stroke="#333333"
+     stroke-width="2"
+     id="path13"
+     style="display:none" />
+  <path
+     d="m 460,250 c -20,0 -100,0 -120,0"
+     fill="none"
+     marker-end="url(#id12)"
+     stroke="#333333"
+     stroke-width="2"
+     id="path14"
+     style="display:none" />
+  <text
+     fill="#333333"
+     font-family="Arial"
+     font-size="11px"
+     text-anchor="middle"
+     x="400"
+     y="220"
+     id="text14"
+     style="display:none">Hybrid workflows</text>
+  <text
+     fill="#333333"
+     font-family="Arial"
+     font-size="11px"
+     text-anchor="middle"
+     x="400"
+     y="310"
+     id="text15"
+     style="display:none">Interactive ↔ Immersive</text>
+  <text
+     fill="#555555"
+     font-family="Arial"
+     font-size="11px"
+     text-anchor="middle"
+     x="400"
+     y="455"
+     id="text16"
+     style="display:none">Interactive = system responds to user input</text>
+  <text
+     fill="#555555"
+     font-family="Arial"
+     font-size="11px"
+     text-anchor="middle"
+     x="400"
+     y="470"
+     id="text17"
+     style="display:none">XR = multisensory spaces merging physical &amp; virtual</text>
+</svg>

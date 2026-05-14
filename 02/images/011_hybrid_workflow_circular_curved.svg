@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="603"
+   version="1.1"
+   width="753"
+   id="svg13"
+   sodipodi:docname="011_hybrid_workflow_circular_curved.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   inkscape:export-filename="hybrid_workflow_circular_curved.png"
+   inkscape:export-xdpi="356.97211"
+   inkscape:export-ydpi="356.97211"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview13"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.69666667"
+     inkscape:cx="378.22966"
+     inkscape:cy="302.15311"
+     inkscape:window-width="1600"
+     inkscape:window-height="829"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg13" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="marker6"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide, heavy arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="m 1,0 -3,3 h -2 l 3,-3 -3,-3 h 2 z"
+         id="path6" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowWideHeavy"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide, heavy arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="m 1,0 -3,3 h -2 l 3,-3 -3,-3 h 2 z"
+         id="path5" />
+    </marker>
+    <marker
+       id="id5"
+       markerHeight="10"
+       markerWidth="10"
+       orient="auto"
+       refX="10"
+       refY="5">
+      <path
+         d="M 0,0 10,5 0,10 Z"
+         fill="#333333"
+         id="path1" />
+    </marker>
+    <marker
+       id="id5-9"
+       markerHeight="10"
+       markerWidth="10"
+       orient="auto"
+       refX="10"
+       refY="5">
+      <path
+         d="M 0,0 10,5 0,10 Z"
+         fill="#333333"
+         id="path1-4" />
+    </marker>
+    <marker
+       id="id5-94"
+       markerHeight="10"
+       markerWidth="10"
+       orient="auto"
+       refX="10"
+       refY="5">
+      <path
+         d="M 0,0 10,5 0,10 Z"
+         fill="#333333"
+         id="path1-8" />
+    </marker>
+  </defs>
+  <path
+     d="m 376.5,41.5 q 240.41631,19.58369 260,260"
+     fill="none"
+     marker-end="url(#id5)"
+     stroke="#333333"
+     stroke-width="2"
+     id="path2"
+     style="stroke-width:3;stroke-dasharray:none" />
+  <path
+     d="m 531.55789,91.84353 c 36.06647,31.96448 65.77573,70.28617 79.07992,106.35265"
+     fill="none"
+     marker-end="url(#id5-94)"
+     stroke="#333333"
+     stroke-width="0.718725"
+     id="path2-2"
+     style="display:none;stroke-width:6;stroke-dasharray:none;marker-start:url(#marker6);marker-end:url(#ArrowWideHeavy)"
+     sodipodi:nodetypes="cc" />
+  <path
+     d="m 117.2784,306.36746 c 3.62098,-54.3925 15.82534,-100.45208 36.61307,-138.17875 5.97221,-10.83866 12.65287,-20.98955 20.04198,-30.45264 C 216.69547,82.97158 283.18458,51.24184 373.4008,42.54684"
+     fill="none"
+     marker-end="url(#id5-9)"
+     stroke="#333333"
+     stroke-width="2"
+     id="path2-8"
+     style="stroke-width:3;stroke-dasharray:none;marker-end:url(#id5-9)"
+     sodipodi:nodetypes="cssc" />
+  <path
+     d="m 636.5,301.5 q -19.58369,240.41631 -260,260"
+     fill="none"
+     marker-end="url(#id5)"
+     stroke="#333333"
+     stroke-width="2"
+     id="path3"
+     style="stroke-width:3;stroke-dasharray:none" />
+  <path
+     d="m 376.5,561.5 q -240.41631,-19.58369 -260,-260"
+     fill="none"
+     marker-end="url(#id5)"
+     stroke="#333333"
+     stroke-width="2"
+     id="path4"
+     style="stroke-width:3;stroke-dasharray:none" />
+  <rect
+     fill="#fafafa"
+     height="80"
+     rx="14"
+     ry="14"
+     stroke="#333333"
+     stroke-width="1.5"
+     width="230"
+     x="261.5"
+     y="1.5"
+     id="rect5"
+     style="display:inline;stroke-width:3;stroke-dasharray:none" />
+  <text
+     fill="#111111"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="16px"
+     font-weight="bold"
+     text-anchor="middle"
+     x="376.5"
+     y="31.5"
+     id="text5"
+     style="font-size:18.6667px">Manual / Traditional</text>
+  <text
+     fill="#4b5563"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="13px"
+     text-anchor="middle"
+     x="376.5"
+     y="55.5"
+     id="text6"
+     style="font-size:16px">Physical modeling, drawing</text>
+  <rect
+     fill="#fafafa"
+     height="80"
+     rx="14"
+     ry="14"
+     stroke="#333333"
+     stroke-width="1.5"
+     width="230"
+     x="521.5"
+     y="261.5"
+     id="rect6"
+     style="display:inline;stroke-width:3;stroke-dasharray:none" />
+  <text
+     fill="#111111"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="16px"
+     font-weight="bold"
+     text-anchor="middle"
+     x="636.5"
+     y="291.5"
+     id="text7"
+     style="font-size:18.6667px">Digital / Computational</text>
+  <text
+     fill="#4b5563"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="13px"
+     text-anchor="middle"
+     x="636.5"
+     y="315.5"
+     id="text8"
+     style="font-size:16px">Scanning, sculpting, nodes</text>
+  <rect
+     fill="#fafafa"
+     height="80"
+     rx="14"
+     ry="14"
+     stroke="#333333"
+     stroke-width="1.5"
+     width="230"
+     x="261.5"
+     y="521.5"
+     id="rect8"
+     style="display:inline;stroke-width:3;stroke-dasharray:none" />
+  <text
+     fill="#111111"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="16px"
+     font-weight="bold"
+     text-anchor="middle"
+     x="376.5"
+     y="551.5"
+     id="text9"
+     style="font-size:18.6667px">AI Integration</text>
+  <text
+     fill="#4b5563"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="13px"
+     text-anchor="middle"
+     x="376.5"
+     y="575.5"
+     id="text10"
+     style="font-size:16px">Diffusion, generative tools</text>
+  <rect
+     fill="#fafafa"
+     height="80"
+     rx="14"
+     ry="14"
+     stroke="#333333"
+     stroke-width="1.5"
+     width="230"
+     x="1.5"
+     y="261.5"
+     id="rect10"
+     style="display:inline;stroke-width:3;stroke-dasharray:none" />
+  <text
+     fill="#111111"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="16px"
+     font-weight="bold"
+     text-anchor="middle"
+     x="116.5"
+     y="291.5"
+     id="text11"
+     style="font-size:18.6667px">Physical Output</text>
+  <text
+     fill="#4b5563"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="13px"
+     text-anchor="middle"
+     x="116.5"
+     y="315.5"
+     id="text12"
+     style="font-size:16px">3D printing, CNC, casting</text>
+  <text
+     fill="#6b7280"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="14px"
+     text-anchor="middle"
+     x="376.5"
+     y="306.5"
+     id="text13"
+     style="font-size:21.3333px;display:none">Hybrid Workflow (cyclic)</text>
+  <path
+     d="m 531.55789,91.84353 c 36.06647,31.96448 65.77573,70.28617 79.07992,106.35265"
+     fill="none"
+     marker-end="url(#id5-94)"
+     stroke="#333333"
+     stroke-width="0.718725"
+     id="path7"
+     style="display:none;stroke-width:6;stroke-dasharray:none;marker-start:url(#marker6);marker-end:url(#ArrowWideHeavy)"
+     sodipodi:nodetypes="cc" />
+</svg>

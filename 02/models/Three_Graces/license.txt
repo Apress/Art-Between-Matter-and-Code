@@ -1,0 +1,11 @@
+Model Information:
+* title:	The Three Graces
+* source:	https://sketchfab.com/3d-models/the-three-graces-437574a871ca4e56be5944d5f0390309
+* author:	Geoffrey Marchal (https://sketchfab.com/geoffreymarchal)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "The Three Graces" (https://sketchfab.com/3d-models/the-three-graces-437574a871ca4e56be5944d5f0390309) by Geoffrey Marchal (https://sketchfab.com/geoffreymarchal) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
