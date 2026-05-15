@@ -1,6 +1,6 @@
 @echo off
-:: Scan Cleanup — import your scan first, then run this
-:: Select the scan mesh in Blender before running.
+:: Scan Cleanup — opens Blender in Scripting workspace with scan_cleanup.py loaded.
+:: Import your scan mesh first (File > Import), select it, then Alt+P to run.
 cd /d "%~dp0"
 set BLENDER_EXE=
 for %%B in (
@@ -11,10 +11,18 @@ for %%B in (
 ) do ( if exist %%B ( set BLENDER_EXE=%%B & goto :found ) )
 where blender >nul 2>&1 && set BLENDER_EXE=blender && goto :found
 echo Blender not found. Install from https://www.blender.org & pause & exit /b 1
+
 :found
+if not exist "%~dp0_scripting_startup.blend" (
+    echo [first run] Building Scripting workspace startup file - please wait...
+    %BLENDER_EXE% --python "%~dp0_make_startup.py"
+    echo [first run] Done.
+)
+
 echo.
-echo NOTE: Import your scan mesh FIRST, select it, then re-run from Blender Scripting tab.
-echo       Or load scan_cleanup.py manually via Scripting - Open - Run Script (Alt+P).
+echo Blender will open in Scripting workspace with scan_cleanup.py loaded.
+echo   1. File ^> Import ^> OBJ / FBX / PLY  — import your scan mesh
+echo   2. Click the mesh in the 3D viewport to select it
+echo   3. Press Alt+P in the text editor to run the cleanup
 echo.
-start "" %BLENDER_EXE%
-pause
+start "" %BLENDER_EXE% "%~dp0_scripting_startup.blend" --python "%~dp0scan_cleanup.py"

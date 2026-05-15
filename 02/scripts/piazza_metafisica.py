@@ -39,38 +39,29 @@ SUBDIVISIONS  = 2        # subdivision surface level before sculpt stage
 
 
 def load_into_editor():
-    """Switch to the Scripting workspace and load this file into the text editor.
+    """Load this script into the Scripting workspace text editor.
 
-    Uses a 2-second timer so it fires AFTER Blender has finished initialising
-    its default workspace (depsgraph handlers fire during startup and get
-    overridden by Blender's post-startup workspace reset).
+    The workspace switch is handled by the .bat launcher (which opens
+    _scripting_startup.blend).  This function only needs to make the
+    script text appear in the text-editor area so the CONFIG block is
+    immediately visible and editable.
     """
     try:
         filepath = os.path.abspath(__file__)
     except NameError:
-        return   # running from the text editor — already in Scripting
+        return   # running from the text editor — already loaded
     name = os.path.basename(filepath)
     text = bpy.data.texts.get(name) or bpy.data.texts.load(filepath)
 
-    def _switch():
+    def _set_text():
         for ws in bpy.data.workspaces:
             for screen in ws.screens:
                 for area in screen.areas:
                     if area.type == 'TEXT_EDITOR':
                         area.spaces.active.text = text
-        script_ws = next(
-            (ws for ws in bpy.data.workspaces if "Script" in ws.name), None
-        )
-        if script_ws:
-            for window in bpy.context.window_manager.windows:
-                try:
-                    with bpy.context.temp_override(window=window):
-                        bpy.ops.screen.workspace_set(name=script_ws.name)
-                except Exception as e:
-                    print(f"  [load_into_editor] workspace_set: {e}")
-        return None
+        return None  # one-shot
 
-    bpy.app.timers.register(_switch, first_interval=2.0)
+    bpy.app.timers.register(_set_text, first_interval=0.5)
 
 
 def clear_scene():
