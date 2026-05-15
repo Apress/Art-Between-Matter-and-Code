@@ -72,15 +72,40 @@ def load_into_editor():
     bpy.app.timers.register(_set_text, first_interval=0.5)
 
 
-def clear_scene():
-    # Force Object Mode — robust against Edit/Sculpt Mode and startup files
-    # saved in Edit Mode (no active object → mode_set would fail silently)
+def _force_object_mode():
+    """Force Object Mode even when the active area is not a 3D viewport.
+
+    When launched via --python the default context area is the Text Editor
+    (Scripting workspace), so bpy.ops.object.mode_set fails silently.
+    This helper searches every screen for a VIEW_3D area and uses
+    temp_override to provide the required context.
+    """
     if bpy.context.scene.objects:
         bpy.context.view_layer.objects.active = list(bpy.context.scene.objects)[0]
+    # Try current context first (works when a 3D viewport is active)
     try:
         bpy.ops.object.mode_set(mode="OBJECT")
+        return
     except Exception:
         pass
+    # Search all screens for a VIEW_3D area
+    for screen in bpy.data.screens:
+        for area in screen.areas:
+            if area.type != 'VIEW_3D':
+                continue
+            for region in area.regions:
+                if region.type != 'WINDOW':
+                    continue
+                try:
+                    with bpy.context.temp_override(screen=screen, area=area, region=region):
+                        bpy.ops.object.mode_set(mode="OBJECT")
+                    return
+                except Exception:
+                    continue
+
+
+def clear_scene():
+    _force_object_mode()
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete()
 
@@ -197,11 +222,12 @@ def phase4_fabrication(source_obj):
             print(f"  [warn] Could not apply '{mod.name}': {e}")
 
     # Merge doubles (remove_doubles was renamed in Blender 4.x)
+    _force_object_mode()
     bpy.ops.object.mode_set(mode="EDIT")
     bpy.ops.mesh.select_all(action="SELECT")
     bpy.ops.mesh.merge_by_distance(threshold=0.001)
     bpy.ops.mesh.normals_make_consistent(inside=False)
-    bpy.ops.object.mode_set(mode="OBJECT")
+    _force_object_mode()
 
     # Scale to real-world: 20cm diameter
     target_scale = 0.20 / max(source_obj.dimensions)
@@ -267,10 +293,7 @@ def main():
     setup_render()
 
     # Ensure we always finish in Object Mode regardless of which phases ran
-    try:
-        bpy.ops.object.mode_set(mode="OBJECT")
-    except Exception:
-        pass
+    _force_object_mode()
 
     print("[hybrid_workflow] Complete. Each phase is visible as a modifier stack state.")
     print("  To inspect individual phases: set END_PHASE=1, 2, 3, or 4 and re-run.")

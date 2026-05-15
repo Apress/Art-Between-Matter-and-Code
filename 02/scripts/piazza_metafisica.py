@@ -64,13 +64,32 @@ def load_into_editor():
     bpy.app.timers.register(_set_text, first_interval=0.5)
 
 
-def clear_scene():
+def _force_object_mode():
+    """Force Object Mode even when the active area is not a 3D viewport."""
     if bpy.context.scene.objects:
         bpy.context.view_layer.objects.active = list(bpy.context.scene.objects)[0]
     try:
         bpy.ops.object.mode_set(mode="OBJECT")
+        return
     except Exception:
         pass
+    for screen in bpy.data.screens:
+        for area in screen.areas:
+            if area.type != 'VIEW_3D':
+                continue
+            for region in area.regions:
+                if region.type != 'WINDOW':
+                    continue
+                try:
+                    with bpy.context.temp_override(screen=screen, area=area, region=region):
+                        bpy.ops.object.mode_set(mode="OBJECT")
+                    return
+                except Exception:
+                    continue
+
+
+def clear_scene():
+    _force_object_mode()
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete()
 
@@ -286,10 +305,7 @@ def main():
     setup_render()
 
     # Ensure we always finish in Object Mode regardless of which stages ran
-    try:
-        bpy.ops.object.mode_set(mode="OBJECT")
-    except Exception:
-        pass
+    _force_object_mode()
 
     print("[piazza_metafisica] Scene ready. Use Blender's Sculpt Mode to add brush detail.")
     load_into_editor()
