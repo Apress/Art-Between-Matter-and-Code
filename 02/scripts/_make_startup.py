@@ -4,44 +4,72 @@ _make_startup.py — Create _scripting_startup.blend (run ONCE)
 Chapter 2 · Art Between Matter and Code · Gianpiero Moioli
 Apress / Springer Nature, 2025 · CC BY-NC 4.0
 
-HOW TO RUN (one time only):
-  1. Open Blender
-  2. Click the Scripting workspace tab
-  3. In the Text Editor: Text Editor header > Open > select this file
+HOW TO RUN:
+  1. Open Blender and click the Scripting workspace tab
+  2. Text Editor header > Open > select THIS file from disk
+  3. Set OUTPUT_PATH below (copy the path of this folder)
   4. Press Alt+P
 
-Blender saves _scripting_startup.blend next to this file — a minimal
-.blend with the Scripting workspace active — then you can close Blender.
-Commit _scripting_startup.blend to the repo so readers get it automatically.
-
-The .bat launchers will then always open in Scripting workspace.
+Blender saves _scripting_startup.blend in that folder.
+Commit _scripting_startup.blend to the repo — done.
 """
 
 import bpy
 import os
 
-# ── Find script directory ─────────────────────────────────────────────────────
-try:
-    # When launched via --python from command line
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-except NameError:
-    # When run from Blender's text editor (Alt+P)
+# ── CONFIG ────────────────────────────────────────────────────────────────────
+# Paste the full path to the 02/scripts folder here (keep the r prefix):
+OUTPUT_PATH = r""
+# Example — Windows:
+#   OUTPUT_PATH = r"D:\TEORIA\Art_Matter_Code\Art-Between-Matter-and-Code\02\scripts"
+# Example — macOS / Linux:
+#   OUTPUT_PATH = r"/Users/yourname/Art-Between-Matter-and-Code/02/scripts"
+# ──────────────────────────────────────────────────────────────────────────────
+
+
+def _get_script_dir():
+    # 1. OUTPUT_PATH set manually — most reliable
+    if OUTPUT_PATH.strip():
+        d = OUTPUT_PATH.strip()
+        if not os.path.isdir(d):
+            raise RuntimeError(f"OUTPUT_PATH does not exist: {d}")
+        return d
+
+    # 2. Running via --python from command line (__file__ is available)
     try:
-        space = bpy.context.space_data
-        raw = space.text.filepath
-        if not raw:
-            raise RuntimeError(
-                "Text file has no path on disk.\n"
-                "Use Text Editor > Open to load this file from disk, then Alt+P."
-            )
-        script_dir = os.path.dirname(bpy.path.abspath(raw))
+        return os.path.dirname(os.path.abspath(__file__))
+    except NameError:
+        pass
+
+    # 3. Running from text editor — use the text block's filepath
+    try:
+        raw = bpy.context.space_data.text.filepath
     except AttributeError:
-        raise RuntimeError("Run this script from Blender's Scripting workspace text editor.")
+        raise RuntimeError("Run from the Scripting workspace text editor.")
 
+    if not raw:
+        raise RuntimeError(
+            "Text file has no path — use Text Editor > Open to load it from disk."
+        )
+
+    # Try absolute path as-is first, then Blender's resolver
+    candidates = [raw, bpy.path.abspath(raw)]
+    for fp in candidates:
+        d = os.path.dirname(os.path.abspath(fp))
+        if os.path.isdir(d) and d not in ("", "C:\\", "C:/", "/"):
+            return d
+
+    raise RuntimeError(
+        f"Could not resolve script directory from: {raw!r}\n"
+        "Set OUTPUT_PATH manually at the top of this script."
+    )
+
+
+script_dir = _get_script_dir()
 out = os.path.join(script_dir, "_scripting_startup.blend")
-print(f"\n[setup] Saving Scripting workspace startup to:\n  {out}\n")
+print(f"\n[setup] Saving to: {out}")
 
-# ── Clear the default scene for a minimal blend ───────────────────────────────
+# Clear the default scene for a minimal blend
 try:
     bpy.ops.object.mode_set(mode="OBJECT")
 except Exception:
@@ -52,11 +80,9 @@ try:
 except Exception as e:
     print(f"[setup] Scene clear: {e}")
 
-# ── Save ──────────────────────────────────────────────────────────────────────
-# copy=True writes to `out` without changing the current .blend session
+# Save a copy with the current workspace (Scripting) baked in
 bpy.ops.wm.save_as_mainfile(filepath=out, copy=True)
 
 print("[setup] Done.")
-print("[setup] You can now close Blender.")
-print("[setup] Commit _scripting_startup.blend to the repo —")
-print("[setup] readers will download it automatically with the other files.")
+print("[setup] You can close Blender.")
+print("[setup] Then:  git add 02/scripts/_scripting_startup.blend && git commit -m 'add: scripting startup blend'")
