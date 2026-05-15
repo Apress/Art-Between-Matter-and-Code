@@ -59,9 +59,12 @@ def new_collection(name):
 
 
 def make_canvas(col, size):
-    bpy.ops.mesh.primitive_plane_add(size=size * 2, location=(0, 0, 0))
+    # Use a thin box, not a plane: boolean DIFFERENCE requires closed (manifold) geometry.
+    # A flat plane has zero volume and produces only edge artefacts, not real cuts.
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
     canvas = bpy.context.active_object
     canvas.name = "FontanaCanvas"
+    canvas.dimensions = (size * 2, size * 2, 0.025)   # thin but solid
     col.objects.link(canvas)
     bpy.context.scene.collection.objects.unlink(canvas)
 
@@ -85,7 +88,7 @@ def cut_positions(num, size, mode, seed):
         positions = []
         for i in range(num):
             y = -half + (2 * half) * ((i * phi) % 1.0)
-        positions.append(y)
+            positions.append(y)          # fix: must be inside the loop
         return sorted(positions)
     else:  # random
         random.seed(seed)
@@ -116,7 +119,7 @@ def apply_boolean_cut(canvas, blade):
     mod = canvas.modifiers.new(name=f"Bool_{blade.name}", type="BOOLEAN")
     mod.operation = "DIFFERENCE"
     mod.object = blade
-    mod.solver = "FAST"
+    mod.solver = "EXACT"    # FAST/FLOAT is unreliable on thin geometry; EXACT gives clean cuts
 
     bpy.context.view_layer.objects.active = canvas
     bpy.ops.object.modifier_apply(modifier=mod.name)

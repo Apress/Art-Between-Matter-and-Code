@@ -51,6 +51,14 @@ EMIT_PARTICLES = False       # particle system for energy-propagation visualizat
 # ──────────────────────────────────────────────────────────────────────────────
 
 
+def clear_scene():
+    """Remove all default objects (cube, camera, light) before building the scene."""
+    bpy.ops.object.select_all(action="SELECT")
+    bpy.ops.object.delete()
+    for col in list(bpy.data.collections):
+        bpy.data.collections.remove(col)
+
+
 def remove_existing(name):
     if name in bpy.data.objects:
         obj = bpy.data.objects[name]
@@ -167,6 +175,7 @@ def add_camera_and_light(size):
 
 
 def main():
+    clear_scene()                # remove default Blender cube / camera / light
     obj_name = "ParametricSpace"
     remove_existing(obj_name)
 
