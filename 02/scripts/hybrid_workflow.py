@@ -47,10 +47,9 @@ PHASE_COLORS = {
 
 
 def load_into_editor():
-    """Load this file into Blender's text editor and switch to Scripting workspace.
-    Uses window_manager.windows (always available) instead of bpy.context.window
-    (unreliable in timer context). Timer defers the switch until the UI event
-    loop is running — necessary when launched via --python from a .bat/.sh."""
+    """Load this file into the Scripting workspace after Blender's UI is ready.
+    Uses depsgraph_update_post handler — fires in the main UI thread with full
+    context, more reliable than timers when launched via --python from .bat/.sh."""
     try:
         filepath = os.path.abspath(__file__)
     except NameError:
@@ -58,21 +57,31 @@ def load_into_editor():
     name = os.path.basename(filepath)
     text = bpy.data.texts[name] if name in bpy.data.texts else bpy.data.texts.load(filepath)
 
-    def _switch():
+    def _switch(scene, depsgraph):
+        # Assign text to every text editor area
         for ws in bpy.data.workspaces:
             for screen in ws.screens:
                 for area in screen.areas:
                     if area.type == 'TEXT_EDITOR':
                         area.spaces.active.text = text
+        # Switch all windows to the Scripting workspace
         script_ws = next((ws for ws in bpy.data.workspaces if "Script" in ws.name), None)
         if script_ws:
             for window in bpy.context.window_manager.windows:
                 window.workspace = script_ws
+        # One-shot: remove itself after first execution
+        if _switch in bpy.app.handlers.depsgraph_update_post:
+            bpy.app.handlers.depsgraph_update_post.remove(_switch)
 
-    bpy.app.timers.register(_switch, first_interval=0.5)
+    bpy.app.handlers.depsgraph_update_post.append(_switch)
 
 
 def clear_scene():
+    # Force Object Mode first — script may be re-run while in Edit/Sculpt Mode
+    try:
+        bpy.ops.object.mode_set(mode="OBJECT")
+    except Exception:
+        pass
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete()
 

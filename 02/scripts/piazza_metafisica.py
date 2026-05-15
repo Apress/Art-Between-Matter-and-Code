@@ -46,7 +46,7 @@ def load_into_editor():
     name = os.path.basename(filepath)
     text = bpy.data.texts[name] if name in bpy.data.texts else bpy.data.texts.load(filepath)
 
-    def _switch():
+    def _switch(scene, depsgraph):
         for ws in bpy.data.workspaces:
             for screen in ws.screens:
                 for area in screen.areas:
@@ -56,11 +56,17 @@ def load_into_editor():
         if script_ws:
             for window in bpy.context.window_manager.windows:
                 window.workspace = script_ws
+        if _switch in bpy.app.handlers.depsgraph_update_post:
+            bpy.app.handlers.depsgraph_update_post.remove(_switch)
 
-    bpy.app.timers.register(_switch, first_interval=0.5)
+    bpy.app.handlers.depsgraph_update_post.append(_switch)
 
 
 def clear_scene():
+    try:
+        bpy.ops.object.mode_set(mode="OBJECT")
+    except Exception:
+        pass
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete()
 
