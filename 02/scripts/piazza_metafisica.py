@@ -59,6 +59,22 @@ def load_into_editor():
                 for area in screen.areas:
                     if area.type == 'TEXT_EDITOR':
                         area.spaces.active.text = text
+        wm = bpy.context.window_manager
+        win = wm.windows[0] if wm.windows else None
+        for screen in bpy.data.screens:
+            for area in screen.areas:
+                if area.type != 'VIEW_3D':
+                    continue
+                for region in area.regions:
+                    if region.type != 'WINDOW':
+                        continue
+                    try:
+                        with bpy.context.temp_override(
+                            window=win, screen=screen, area=area, region=region
+                        ):
+                            bpy.ops.view3d.view_all()
+                    except Exception:
+                        pass
         return None  # one-shot
 
     bpy.app.timers.register(_set_text, first_interval=0.5)
@@ -277,11 +293,10 @@ def main():
 
     setup_render()
 
-    # Ensure Object Mode at the end
-    try:
-        bpy.ops.object.mode_set(mode="OBJECT")
-    except Exception:
-        pass
+    # Select a central object so it is active when the viewport opens
+    if floor is not None:
+        bpy.context.view_layer.objects.active = floor
+        floor.select_set(True)
 
     print("[piazza_metafisica] Scene ready. Use Blender's Sculpt Mode to add brush detail.")
     load_into_editor()
