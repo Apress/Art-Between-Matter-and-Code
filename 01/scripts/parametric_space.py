@@ -35,6 +35,7 @@ Usage:
 import bpy
 import bmesh
 import math
+import os
 import mathutils
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
@@ -49,6 +50,22 @@ SOLIDIFY       = True        # add thickness for fabrication / printing
 SOLIDIFY_THICK = 0.02        # solidify thickness in Blender units
 EMIT_PARTICLES = False       # particle system for energy-propagation visualization
 # ──────────────────────────────────────────────────────────────────────────────
+
+
+def load_into_editor():
+    """Open this file in Blender's Scripting workspace so the CONFIG block
+    is immediately visible and editable after the launcher runs the script."""
+    try:
+        filepath = os.path.abspath(__file__)
+        name     = os.path.basename(filepath)
+        if name not in bpy.data.texts:
+            bpy.ops.text.open(filepath=filepath)
+        for ws in bpy.data.workspaces:
+            if "Script" in ws.name:
+                bpy.context.window.workspace = ws
+                break
+    except (NameError, Exception):
+        pass   # already running from the text editor — nothing to do
 
 
 def remove_defaults():
@@ -213,6 +230,7 @@ def main():
     print(f"[parametric_space] Done — profile='{FIELD_PROFILE}', "
           f"grid={GRID_DENSITY}×{GRID_DENSITY}, "
           f"amplitude={WAVE_AMPLITUDE}, frequency={WAVE_FREQUENCY}")
+    load_into_editor()   # open script in Scripting tab so CONFIG is editable
 
 
 if __name__ == "__main__":

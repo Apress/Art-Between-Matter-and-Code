@@ -28,6 +28,7 @@ Parameters (edit CONFIG below):
 import bpy
 import bmesh
 import math
+import os
 from mathutils import Vector
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
@@ -35,6 +36,20 @@ MODE          = "all"    # "object" | "edit" | "sculpt" | "all"
 APPLY_BOOLEAN = True
 SUBDIVISIONS  = 2        # subdivision surface level before sculpt stage
 # ──────────────────────────────────────────────────────────────────────────────
+
+
+def load_into_editor():
+    try:
+        filepath = os.path.abspath(__file__)
+        name     = os.path.basename(filepath)
+        if name not in bpy.data.texts:
+            bpy.ops.text.open(filepath=filepath)
+        for ws in bpy.data.workspaces:
+            if "Script" in ws.name:
+                bpy.context.window.workspace = ws
+                break
+    except (NameError, Exception):
+        pass
 
 
 def clear_scene():
@@ -245,6 +260,7 @@ def main():
 
     setup_render()
     print("[piazza_metafisica] Scene ready. Use Blender's Sculpt Mode to add brush detail.")
+    load_into_editor()
 
 
 if __name__ == "__main__":

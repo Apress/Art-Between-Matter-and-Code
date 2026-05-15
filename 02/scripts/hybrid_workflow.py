@@ -46,6 +46,22 @@ PHASE_COLORS = {
 }
 
 
+def load_into_editor():
+    """Open this file in Blender's Scripting workspace so the CONFIG block
+    is immediately visible and editable after the launcher runs the script."""
+    try:
+        filepath = os.path.abspath(__file__)
+        name     = os.path.basename(filepath)
+        if name not in bpy.data.texts:
+            bpy.ops.text.open(filepath=filepath)
+        for ws in bpy.data.workspaces:
+            if "Script" in ws.name:
+                bpy.context.window.workspace = ws
+                break
+    except (NameError, Exception):
+        pass
+
+
 def clear_scene():
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete()
@@ -233,6 +249,7 @@ def main():
     setup_render()
     print("[hybrid_workflow] Complete. Each phase is visible as a modifier stack state.")
     print("  To inspect individual phases: set END_PHASE=1, 2, 3, or 4 and re-run.")
+    load_into_editor()
 
 
 if __name__ == "__main__":

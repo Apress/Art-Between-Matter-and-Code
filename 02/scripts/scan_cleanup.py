@@ -32,6 +32,7 @@ Parameters:
 
 import bpy
 import bmesh
+import os
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 MERGE_DISTANCE = 0.0005   # 0.5 mm — typical scan noise threshold
@@ -42,6 +43,20 @@ SUB_LEVELS     = 1        # subdivision level (1-3 for scans)
 ADD_ARTISTIC   = False    # add noise displacement for artistic variation
 NOISE_STRENGTH = 0.015    # displacement strength if ADD_ARTISTIC=True
 # ──────────────────────────────────────────────────────────────────────────────
+
+
+def load_into_editor():
+    try:
+        filepath = os.path.abspath(__file__)
+        name     = os.path.basename(filepath)
+        if name not in bpy.data.texts:
+            bpy.ops.text.open(filepath=filepath)
+        for ws in bpy.data.workspaces:
+            if "Script" in ws.name:
+                bpy.context.window.workspace = ws
+                break
+    except (NameError, Exception):
+        pass
 
 
 def get_active_mesh():
@@ -127,7 +142,15 @@ def report_mesh_stats(obj):
 
 
 def main():
-    obj = get_active_mesh()
+    load_into_editor()   # always show script first so CONFIG is readable
+    try:
+        obj = get_active_mesh()
+    except RuntimeError:
+        print("[scan_cleanup] No mesh selected.")
+        print("  1. File > Import > OBJ / FBX / PLY — import your scan")
+        print("  2. Click on the mesh in the 3D viewport to select it")
+        print("  3. Press Alt+P here to run the cleanup")
+        return
     print(f"[scan_cleanup] Processing: '{obj.name}'")
 
     apply_transforms(obj)

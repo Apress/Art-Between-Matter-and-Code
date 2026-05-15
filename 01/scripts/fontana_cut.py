@@ -31,6 +31,7 @@ import bpy
 import bmesh
 import math
 import random
+import os
 from mathutils import Vector, Euler
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
@@ -43,6 +44,22 @@ CANVAS_SIZE = 2.0       # canvas plane half-extent (total: 2 × CANVAS_SIZE)
 SPACING     = "even"    # "even" | "random" | "golden"
 SEED        = 42
 # ──────────────────────────────────────────────────────────────────────────────
+
+
+def load_into_editor():
+    """Open this file in Blender's Scripting workspace so the CONFIG block
+    is immediately visible and editable after the launcher runs the script."""
+    try:
+        filepath = os.path.abspath(__file__)
+        name     = os.path.basename(filepath)
+        if name not in bpy.data.texts:
+            bpy.ops.text.open(filepath=filepath)
+        for ws in bpy.data.workspaces:
+            if "Script" in ws.name:
+                bpy.context.window.workspace = ws
+                break
+    except (NameError, Exception):
+        pass   # already running from the text editor — nothing to do
 
 
 def clear_scene():
@@ -251,6 +268,7 @@ def main():
 
     print(f"[fontana_cut] Done — {NUM_CUTS} parametric cuts applied.")
     print(f"  spacing={SPACING}, angle=±{CUT_ANGLE}°, length={CUT_LENGTH*100:.0f}% of canvas")
+    load_into_editor()   # open script in Scripting tab so CONFIG is editable
 
 
 if __name__ == "__main__":
