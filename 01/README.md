@@ -83,7 +83,7 @@
 |--------|---------|---------------|---------|
 | `fontana_cut.py` | `run_fontana_cut.bat` | `run_fontana_cut.sh` | Blender 5.x |
 | `parametric_space.py` | `run_parametric_space.bat` | `run_parametric_space.sh` | Blender 5.x |
-| `reproduction_matrix.py` | `run_reproduction_matrix.bat` | `run_reproduction_matrix.sh` | Blender 5.x |
+| `material_spectrum.py` | `run_material_spectrum.bat` | `run_material_spectrum.sh` | Blender 5.x |
 
 **macOS / Linux:** make launchers executable before first run: `chmod +x run_*.sh`
 
@@ -125,17 +125,22 @@ Translates the chapter's central concept into geometry: a dense vertex grid defo
 
 ---
 
-### `reproduction_matrix.py` — The Aura and Its Loss
+### `material_spectrum.py` — The Material-Digital Continuum
 
-Three-dimensional visualisation of Walter Benjamin's thesis on mechanical reproduction. A row of `NUM_COPIES` objects represents successive generations: the original (left) is pristine — warm amber material, full form. Moving right, Musgrave procedural noise increases progressively, eroding the surface. Colour shifts from warm ochre to cold blue-grey, mapping aura presence to material temperature.
+The same sculptural form rendered in five material states, left to right:
+**white marble → terracotta → bronze → digital glass → wireframe**.  
+Maps the arc from Canova's studio to the 3D printer — the central argument of §1.2.
+
+Each state uses a distinct Principled BSDF configuration:
+marble has subsurface scattering for inner luminosity; terracotta is rough and opaque;
+bronze is fully metallic; glass uses full transmission; wireframe uses the Wireframe
+modifier with an emission material — geometry without surface, code without matter.
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `NUM_COPIES` | `7` | Total objects — original + N−1 reproductions |
-| `BASE_FORM` | `"sphere"` | Starting shape: `"sphere"` · `"cube"` · `"torus"` |
-| `MAX_NOISE` | `0.55` | Maximum displacement strength on the last copy (0.0 = identical copies) |
-| `SPACING` | `1.6` | Distance between objects in Blender units |
-| `SEED` | `17` | Random seed — each value produces a different degradation path |
+| `BASE_FORM` | `"sphere"` | Sculptural shape: `"sphere"` · `"cube"` · `"torus"` |
+| `SPACING` | `1.8` | Distance between objects in Blender units |
+| `SEED` | `7` | Random seed for marble and terracotta surface variation |
 
 ## Models (`models/`)
 
