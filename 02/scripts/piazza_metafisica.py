@@ -220,17 +220,22 @@ def main():
     col = bpy.data.collections.new("PiazzaMetafisica")
     bpy.context.scene.collection.children.link(col)
 
+    # Initialise to None so stages 2–3 can check safely even if stage 1 was skipped
+    floor   = None
+    arcade  = None
+    volumes = None
+
     if MODE in ("object", "all"):
         floor   = build_piazza_base(col)
         arcade  = build_arcade(col)
         volumes = build_displaced_volumes(col)
         print("[piazza_metafisica] Stage 1 (Object Mode) — composition built.")
 
-    if MODE in ("edit", "all") and "floor" in dir():
+    if MODE in ("edit", "all") and floor is not None:
         refine_floor_mesh(floor)
         print("[piazza_metafisica] Stage 2 (Edit Mode) — floor mesh refined.")
 
-    if MODE in ("sculpt", "all") and "volumes" in dir():
+    if MODE in ("sculpt", "all") and volumes is not None:
         sphere = next((o for o in volumes if "Sphere" in o.name), None)
         if sphere:
             prepare_sphere_for_sculpt(sphere)

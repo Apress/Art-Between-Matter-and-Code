@@ -35,8 +35,7 @@ import os
 START_PHASE = 1
 END_PHASE   = 4
 EXPORT_STL  = False
-EXPORT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                           "hybrid_workflow_output.stl")
+EXPORT_PATH = ""    # leave empty → file saved next to the .blend; or set a full path
 # ──────────────────────────────────────────────────────────────────────────────
 
 PHASE_COLORS = {
@@ -97,7 +96,6 @@ def phase1_maquette():
 
 def phase2_digital(source_obj):
     """Apply digital refinement: subdivision, retopology simulation, precision."""
-    import bpy
     source_obj.select_set(True)
     bpy.context.view_layer.objects.active = source_obj
 
@@ -164,10 +162,10 @@ def phase4_fabrication(source_obj):
         except Exception as e:
             print(f"  [warn] Could not apply '{mod.name}': {e}")
 
-    # Merge doubles
+    # Merge doubles (remove_doubles was renamed in Blender 4.x)
     bpy.ops.object.mode_set(mode="EDIT")
     bpy.ops.mesh.select_all(action="SELECT")
-    bpy.ops.mesh.remove_doubles(threshold=0.001)
+    bpy.ops.mesh.merge_by_distance(threshold=0.001)
     bpy.ops.mesh.normals_make_consistent(inside=False)
     bpy.ops.object.mode_set(mode="OBJECT")
 
@@ -185,8 +183,18 @@ def phase4_fabrication(source_obj):
           f"Dimensions: {[round(d*100,1) for d in source_obj.dimensions]} cm")
 
     if EXPORT_STL:
-        bpy.ops.export_mesh.stl(filepath=EXPORT_PATH, use_selection=True)
-        print(f"  STL exported: {EXPORT_PATH}")
+        # Resolve export path: use EXPORT_PATH if set, otherwise next to .blend
+        path = EXPORT_PATH.strip() if EXPORT_PATH.strip() else os.path.join(
+            bpy.path.abspath("//") or os.path.expanduser("~"),
+            "hybrid_workflow_output.stl"
+        )
+        try:
+            # Blender 4.x / 5.x built-in STL exporter
+            bpy.ops.wm.stl_export(filepath=path, export_selected_objects=True)
+        except AttributeError:
+            # Blender 3.x fallback
+            bpy.ops.export_mesh.stl(filepath=path, use_selection=True)
+        print(f"  STL exported: {path}")
 
     return source_obj
 

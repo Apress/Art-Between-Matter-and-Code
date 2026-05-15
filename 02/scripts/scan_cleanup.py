@@ -54,6 +54,8 @@ def get_active_mesh():
 
 
 def apply_transforms(obj):
+    bpy.context.view_layer.objects.active = obj
+    obj.select_set(True)
     bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
     print(f"  [cleanup] Transforms applied on '{obj.name}'")
 
@@ -91,6 +93,9 @@ def fill_holes(obj, max_hole_verts=50):
 
 
 def apply_voxel_remesh(obj, voxel_size):
+    bpy.context.view_layer.objects.active = obj
+    obj.select_set(True)
+    bpy.ops.object.mode_set(mode="OBJECT")   # voxel_remesh requires Object Mode
     obj.data.remesh_voxel_size = voxel_size
     bpy.ops.object.voxel_remesh()
     print(f"  [cleanup] Voxel remesh applied (size={voxel_size*1000:.1f}mm).")
