@@ -51,15 +51,19 @@ EMIT_PARTICLES = False       # particle system for energy-propagation visualizat
 # ──────────────────────────────────────────────────────────────────────────────
 
 
-def clear_scene():
-    """Remove all default objects (cube, camera, light) before building the scene."""
-    bpy.ops.object.select_all(action="SELECT")
-    bpy.ops.object.delete()
-    for col in list(bpy.data.collections):
-        bpy.data.collections.remove(col)
+def remove_defaults():
+    """Remove only Blender's startup defaults (Cube, Camera, Light).
+    Any other geometry already in the scene (e.g. FontanaCanvas from
+    fontana_cut.py) is preserved — this script is designed to add to
+    an existing scene, not replace it."""
+    for name in ("Cube", "Camera", "Light"):
+        if name in bpy.data.objects:
+            obj = bpy.data.objects[name]
+            bpy.data.objects.remove(obj, do_unlink=True)
 
 
 def remove_existing(name):
+    """Remove a previous run's ParametricSpace object so re-running is clean."""
     if name in bpy.data.objects:
         obj = bpy.data.objects[name]
         bpy.data.meshes.remove(obj.data, do_unlink=True)
@@ -175,9 +179,9 @@ def add_camera_and_light(size):
 
 
 def main():
-    clear_scene()                # remove default Blender cube / camera / light
+    remove_defaults()            # remove startup Cube/Camera/Light only
     obj_name = "ParametricSpace"
-    remove_existing(obj_name)
+    remove_existing(obj_name)    # remove previous run if re-executing
 
     bm = build_mesh(
         GRID_DENSITY, GRID_SIZE,
