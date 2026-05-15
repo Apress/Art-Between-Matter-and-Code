@@ -48,22 +48,31 @@ PHASE_COLORS = {
 
 def load_into_editor():
     """Load this file into Blender's text editor and switch to Scripting workspace.
-    Uses bpy.data.texts.load() — no context override required."""
+    Uses a timer to defer the UI switch until after Blender's event loop has
+    started — required when the script is launched via --python from a .bat/.sh
+    launcher, where bpy.context.window is not yet ready at script execution time."""
     try:
         filepath = os.path.abspath(__file__)
     except NameError:
         return
     name = os.path.basename(filepath)
     text = bpy.data.texts[name] if name in bpy.data.texts else bpy.data.texts.load(filepath)
-    for ws in bpy.data.workspaces:
-        for screen in ws.screens:
-            for area in screen.areas:
-                if area.type == 'TEXT_EDITOR':
-                    area.spaces.active.text = text
-    for ws in bpy.data.workspaces:
-        if "Script" in ws.name:
-            bpy.context.window.workspace = ws
-            break
+
+    def _switch():
+        for ws in bpy.data.workspaces:
+            for screen in ws.screens:
+                for area in screen.areas:
+                    if area.type == 'TEXT_EDITOR':
+                        area.spaces.active.text = text
+        for ws in bpy.data.workspaces:
+            if "Script" in ws.name:
+                try:
+                    bpy.context.window.workspace = ws
+                except Exception:
+                    pass
+                break
+
+    bpy.app.timers.register(_switch, first_interval=0.1)
 
 
 def clear_scene():
