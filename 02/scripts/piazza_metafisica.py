@@ -142,7 +142,9 @@ def build_displaced_volumes(col):
 
 def refine_floor_mesh(floor_obj):
     """Add edge loops and slight wave displacement to the floor."""
+    bpy.ops.object.select_all(action="DESELECT")
     bpy.context.view_layer.objects.active = floor_obj
+    floor_obj.select_set(True)          # mode_set requires active + selected
     bpy.ops.object.mode_set(mode="EDIT")
 
     bm = bmesh.from_edit_mesh(floor_obj.data)

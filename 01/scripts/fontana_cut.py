@@ -181,7 +181,11 @@ def apply_boolean_cut(canvas, blade):
     mod.object = blade
     mod.solver = "EXACT"    # FAST/FLOAT is unreliable on thin geometry; EXACT gives clean cuts
 
+    # modifier_apply requires the object to be BOTH active AND selected
+    bpy.ops.object.select_all(action="DESELECT")
     bpy.context.view_layer.objects.active = canvas
+    canvas.select_set(True)
+    bpy.ops.object.mode_set(mode="OBJECT")
     bpy.ops.object.modifier_apply(modifier=mod.name)
 
 
