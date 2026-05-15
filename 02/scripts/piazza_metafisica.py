@@ -64,34 +64,12 @@ def load_into_editor():
     bpy.app.timers.register(_set_text, first_interval=0.5)
 
 
-def _force_object_mode():
-    """Force Object Mode even when the active area is not a 3D viewport."""
-    if bpy.context.scene.objects:
-        bpy.context.view_layer.objects.active = list(bpy.context.scene.objects)[0]
-    try:
-        bpy.ops.object.mode_set(mode="OBJECT")
-        return
-    except Exception:
-        pass
-    for screen in bpy.data.screens:
-        for area in screen.areas:
-            if area.type != 'VIEW_3D':
-                continue
-            for region in area.regions:
-                if region.type != 'WINDOW':
-                    continue
-                try:
-                    with bpy.context.temp_override(screen=screen, area=area, region=region):
-                        bpy.ops.object.mode_set(mode="OBJECT")
-                    return
-                except Exception:
-                    continue
-
-
 def clear_scene():
-    _force_object_mode()
-    bpy.ops.object.select_all(action="SELECT")
-    bpy.ops.object.delete()
+    # Remove every object via the data API — no operator context needed.
+    # Works in Edit Mode, Object Mode, or any other mode.
+    # Removing the last object automatically exits Edit Mode.
+    for obj in list(bpy.data.objects):
+        bpy.data.objects.remove(obj, do_unlink=True)
 
 
 def move_to_collection(obj, col):
@@ -304,8 +282,11 @@ def main():
 
     setup_render()
 
-    # Ensure we always finish in Object Mode regardless of which stages ran
-    _force_object_mode()
+    # Ensure Object Mode at the end
+    try:
+        bpy.ops.object.mode_set(mode="OBJECT")
+    except Exception:
+        pass
 
     print("[piazza_metafisica] Scene ready. Use Blender's Sculpt Mode to add brush detail.")
     load_into_editor()
