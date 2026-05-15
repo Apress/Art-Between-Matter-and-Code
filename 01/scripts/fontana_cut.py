@@ -95,18 +95,78 @@ def cut_positions(num, size, mode, seed):
         return sorted([random.uniform(-half, half) for _ in range(num)])
 
 
+def make_blade_mesh(half_len, width, depth, curve_amp, rng):
+    """
+    Build a bmesh cutter that mimics a real Fontana cut:
+      - Spine follows a gentle sine curve (the cut is never perfectly straight)
+      - Width tapers with a sine envelope (thin at the tips, wider at centre)
+      - Left and right edges carry independent noise (the 'slabbrato' / frayed look)
+    The result is a closed manifold volume suitable for Boolean DIFFERENCE.
+    """
+    bm  = bmesh.new()
+    N   = 32                          # segments along the cut
+    phi = rng.uniform(0, math.pi)     # random phase for the spine curve
+
+    tl, tr, bl, br = [], [], [], []   # top-left / top-right / bottom-left / bottom-right
+
+    for i in range(N + 1):
+        t = i / N                                           # 0 → 1 along the cut
+        x = -half_len + t * 2 * half_len
+
+        # --- spine: gentle sine that shifts the whole cut sideways ---
+        spine = curve_amp * math.sin(t * math.pi * 2 + phi)
+
+        # --- width: zero at both tips, maximum at centre ---
+        taper = math.sin(t * math.pi)                      # 0 at tips, 1 at centre
+        w     = width * (0.12 + 0.88 * taper)
+
+        # --- edge noise: proportional to local width so tips stay sharp ---
+        fray  = (w / 2) * 0.80                             # max ±80 % of half-width
+        nl    = rng.uniform(-fray, fray)
+        nr    = rng.uniform(-fray, fray)
+
+        yl = spine - w / 2 + nl
+        yr = spine + w / 2 + nr
+        if yr < yl + 0.001:                                # guarantee left stays left
+            yr = yl + 0.001
+
+        tl.append(bm.verts.new((x, yl,  depth)))
+        tr.append(bm.verts.new((x, yr,  depth)))
+        bl.append(bm.verts.new((x, yl, -depth)))
+        br.append(bm.verts.new((x, yr, -depth)))
+
+    bm.verts.ensure_lookup_table()
+
+    for i in range(N):
+        # face winding chosen so normals point outward on every side
+        bm.faces.new([tl[i], tl[i+1], tr[i+1], tr[i]])   # top    (+Z)
+        bm.faces.new([bl[i], br[i], br[i+1], bl[i+1]])   # bottom (-Z)
+        bm.faces.new([tl[i], bl[i], bl[i+1], tl[i+1]])   # left   (-Y)
+        bm.faces.new([tr[i], tr[i+1], br[i+1], br[i]])   # right  (+Y)
+
+    bm.faces.new([tl[0], tr[0], br[0], bl[0]])            # start cap (-X)
+    bm.faces.new([tl[N], bl[N], br[N], tr[N]])            # end cap   (+X)
+
+    bm.normal_update()
+    return bm
+
+
 def make_blade(col, index, y_pos, canvas_size, length, width, depth, angle_deg):
-    half_len = canvas_size * length
-    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, y_pos, 0))
-    blade = bpy.context.active_object
-    blade.name = f"Cut_{index:02d}"
-    blade.dimensions = (half_len * 2, width, depth * 2)
+    """Create an organic Fontana-cut cutter: curved, tapered, frayed."""
+    rng        = random.Random(SEED + index * 13)
+    half_len   = canvas_size * length
+    curve_amp  = canvas_size * rng.uniform(0.025, 0.07)  # 2.5–7 % of canvas → visible arc
 
-    angle_rad = math.radians(angle_deg)
-    blade.rotation_euler = Euler((0, 0, angle_rad), "XYZ")
+    bm   = make_blade_mesh(half_len, width, depth, curve_amp, rng)
+    mesh = bpy.data.meshes.new(f"Cut_{index:02d}_mesh")
+    bm.to_mesh(mesh)
+    bm.free()
 
-    col.objects.link(blade)
-    bpy.context.scene.collection.objects.unlink(blade)
+    blade                = bpy.data.objects.new(f"Cut_{index:02d}", mesh)
+    blade.location       = (0, y_pos, 0)
+    blade.rotation_euler = Euler((0, 0, math.radians(angle_deg)), "XYZ")
+
+    col.objects.link(blade)                        # keep it in Fontana_Cuts collection
 
     mat = bpy.data.materials.new(f"Blade_{index:02d}")
     mat.use_nodes = True
