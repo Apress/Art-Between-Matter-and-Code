@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 800">
+  <style>
+    .title { font: 700 34px sans-serif; fill:#1e1e1e; text-anchor: middle; }
+    .body { font: 22px sans-serif; fill:#1e1e1e; text-anchor: middle; }
+    .node { fill:#2a5bd7; stroke:#f1c40f; stroke-width:6; }
+    .link { stroke:#f1c40f; stroke-width:6; fill:none; }
+  </style>
+
+  <!-- column centers -->
+  <!-- x positions: 225, 675, 1125, 1575 -->
+  <!-- y positions -->
+  <!-- icon y: 150, title y: 320, bullets y: 380/430 -->
+
+  <!-- ===== Block 1: Manual Modeling ===== -->
+  <g>
+    <circle class="node" cx="225" cy="150" r="60"/>
+    <text class="title" x="225" y="320">Manual Modeling</text>
+    <text class="body" x="225" y="385">• Direct, tactile manipulation</text>
+    <text class="body" x="225" y="435">• Local, time-intensive refinement</text>
+  </g>
+
+  <!-- ===== Block 2: Digital Modeling ===== -->
+  <g>
+    <circle class="node" cx="650" cy="150" r="38"/>
+    <circle class="node" cx="700" cy="150" r="38"/>
+    <text class="title" x="675" y="320">Digital Modeling</text>
+    <text class="body" x="675" y="385">• Virtual sculpting with digital tools</text>
+    <text class="body" x="675" y="435">• Non-destructive editing &amp; export</text>
+  </g>
+
+  <!-- ===== Block 3: Procedural Modeling ===== -->
+  <g>
+    <circle class="node" cx="1100" cy="120" r="30"/>
+    <circle class="node" cx="1060" cy="180" r="30"/>
+    <circle class="node" cx="1140" cy="180" r="30"/>
+    <line class="link" x1="1100" y1="120" x2="1060" y2="180"/>
+    <line class="link" x1="1100" y1="120" x2="1140" y2="180"/>
+    <line class="link" x1="1060" y1="180" x2="1140" y2="180"/>
+    <text class="title" x="1100" y="320">Procedural Modeling</text>
+    <text class="body" x="1100" y="385">• Rule-based generative systems</text>
+    <text class="body" x="1100" y="435">• Global edits via parameters</text>
+  </g>
+
+  <!-- ===== Block 4: AI-mediated / Data-driven ===== -->
+  <g>
+    <circle class="node" cx="1575" cy="150" r="44"/>
+    <line class="link" x1="1575" y1="150" x2="1575" y2="76"/>
+    <line class="link" x1="1575" y1="150" x2="1575" y2="224"/>
+    <line class="link" x1="1575" y1="150" x2="1501" y2="150"/>
+    <line class="link" x1="1575" y1="150" x2="1649" y2="150"/>
+    <circle class="node" cx="1575" cy="76" r="26"/>
+    <circle class="node" cx="1575" cy="224" r="26"/>
+    <circle class="node" cx="1501" cy="150" r="26"/>
+    <circle class="node" cx="1649" cy="150" r="26"/>
+    <text class="title" x="1575" y="320">AI-mediated / Data-driven</text>
+    <text class="body" x="1575" y="385">• Learning systems &amp; datasets</text>
+    <text class="body" x="1575" y="435">• Unforeseen, adaptive variations</text>
+  </g>
+</svg>

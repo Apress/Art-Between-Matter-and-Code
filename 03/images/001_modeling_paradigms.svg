@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1700.3004 405.401"
+   version="1.1"
+   id="svg20"
+   sodipodi:docname="001_modeling_paradigms.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   inkscape:export-filename="..\Chap_7\FINALE_modeling_paradigms_BOXED.png"
+   inkscape:export-xdpi="146.79759"
+   inkscape:export-ydpi="146.79759"
+   width="1700.3004"
+   height="405.401"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs20" />
+  <sodipodi:namedview
+     id="namedview20"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.78375"
+     inkscape:cx="1062.201"
+     inkscape:cy="346.41148"
+     inkscape:window-width="1600"
+     inkscape:window-height="829"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg20" />
+  <style
+     id="style1">
+    .title { font: 700 30px sans-serif; fill:#1e1e1e; text-anchor: middle; }
+    .body { font: 20px sans-serif; fill:#1e1e1e; text-anchor: middle; }
+    .node { fill:#2a5bd7; stroke:#f1c40f; stroke-width:6; }
+    .link { stroke:#f1c40f; stroke-width:6; fill:none; }
+    .box { fill:#e6e6e6; stroke:none; }
+  </style>
+  <!-- column centers -->
+  <!-- x positions: 225, 675, 1125, 1575 -->
+  <!-- ===== Block 1: Manual Modeling ===== -->
+  <g
+     id="g3"
+     transform="translate(-55.223286,-14.598988)">
+    <circle
+       class="node"
+       cx="225"
+       cy="120"
+       r="60"
+       id="circle1" />
+    <rect
+       class="box"
+       x="55.223286"
+       y="220"
+       rx="28.349283"
+       ry="25"
+       width="340.19138"
+       height="200"
+       id="rect1"
+       style="stroke-width:1.06489" />
+    <text
+       class="title"
+       x="225"
+       y="265"
+       id="text1"
+       style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:30px;line-height:normal;font-family:sans-serif">Manual Modeling</text>
+    <text
+       class="body"
+       x="225"
+       y="315"
+       id="text2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:normal;font-family:sans-serif">• Direct, tactile manipulation</text>
+    <text
+       class="body"
+       x="225"
+       y="355"
+       id="text3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:normal;font-family:sans-serif">• Local, time intensive refinement</text>
+  </g>
+  <!-- ===== Block 2: Digital Modeling ===== -->
+  <g
+     id="g6"
+     transform="translate(-75.223286,-14.598988)">
+    <circle
+       class="node"
+       cx="650"
+       cy="120"
+       r="38"
+       id="circle3" />
+    <circle
+       class="node"
+       cx="700"
+       cy="120"
+       r="38"
+       id="circle4" />
+    <rect
+       class="box"
+       x="503.94736"
+       y="220"
+       rx="28.827753"
+       ry="25"
+       width="345.93301"
+       height="200"
+       id="rect4"
+       style="stroke-width:1.07383" />
+    <text
+       class="title"
+       x="675"
+       y="265"
+       id="text4"
+       style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:30px;line-height:normal;font-family:sans-serif">Digital Modeling</text>
+    <text
+       class="body"
+       x="675"
+       y="315"
+       id="text5"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:normal;font-family:sans-serif">• Virtual sculpting with digital tools</text>
+    <text
+       class="body"
+       x="675"
+       y="355"
+       id="text6"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:normal;font-family:sans-serif">• Non destructive editing &amp; export</text>
+  </g>
+  <!-- ===== Block 3: Procedural Modeling ===== -->
+  <g
+     id="g12"
+     transform="translate(-81.223286,-14.598988)">
+    <circle
+       class="node"
+       cx="1100"
+       cy="100"
+       r="30"
+       id="circle6" />
+    <circle
+       class="node"
+       cx="1060"
+       cy="160"
+       r="30"
+       id="circle7" />
+    <circle
+       class="node"
+       cx="1140"
+       cy="160"
+       r="30"
+       id="circle8" />
+    <rect
+       class="box"
+       x="958.76025"
+       y="220"
+       rx="27.405893"
+       ry="25"
+       width="328.8707"
+       height="200"
+       id="rect10"
+       style="stroke-width:1.04701" />
+    <text
+       class="title"
+       x="1125"
+       y="265"
+       id="text10"
+       style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:30px;line-height:normal;font-family:sans-serif">Procedural Modeling</text>
+    <text
+       class="body"
+       x="1125"
+       y="315"
+       id="text11"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:normal;font-family:sans-serif">• Rule based generative systems</text>
+    <text
+       class="body"
+       x="1125"
+       y="355"
+       id="text12"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:normal;font-family:sans-serif">• Global edits via parameters</text>
+  </g>
+  <!-- ===== Block 4: AI-mediated / Data-driven ===== -->
+  <g
+     id="g20"
+     transform="translate(-75.223286,-14.598988)">
+    <circle
+       class="node"
+       cx="1575"
+       cy="120"
+       r="44"
+       id="circle12" />
+    <circle
+       class="node"
+       cx="1575"
+       cy="50"
+       r="26"
+       id="circle15" />
+    <circle
+       class="node"
+       cx="1575"
+       cy="190"
+       r="26"
+       id="circle16" />
+    <circle
+       class="node"
+       cx="1505"
+       cy="120"
+       r="26"
+       id="circle17" />
+    <circle
+       class="node"
+       cx="1653.1199"
+       cy="69.476265"
+       r="26"
+       id="circle18"
+       style="display:inline" />
+    <rect
+       class="box"
+       x="1370.8674"
+       y="220"
+       rx="33.721359"
+       ry="25"
+       width="404.65631"
+       height="200"
+       id="rect18"
+       style="stroke-width:1.1614" />
+    <text
+       class="title"
+       x="1575"
+       y="265"
+       id="text18"
+       style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:30px;line-height:normal;font-family:sans-serif">AI-mediated / Data-driven</text>
+    <text
+       class="body"
+       x="1575"
+       y="315"
+       id="text19"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:normal;font-family:sans-serif">• Learning systems &amp; datasets</text>
+    <text
+       class="body"
+       x="1575"
+       y="355"
+       id="text20"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:normal;font-family:sans-serif">• Unforeseen, adaptive variations</text>
+  </g>
+  <circle
+     class="node"
+     cx="1588.1993"
+     cy="140.79874"
+     r="26"
+     id="circle18-8"
+     style="display:inline;fill:#2a5bd7;stroke:#f1c40f;stroke-width:6" />
+  <circle
+     class="node"
+     cx="1655.4519"
+     cy="29"
+     r="26"
+     id="circle18-2"
+     style="display:inline;fill:#2a5bd7;stroke:#f1c40f;stroke-width:6" />
+</svg>
