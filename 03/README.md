@@ -40,7 +40,7 @@ Blender scene files corresponding to the book figures. Open directly in Blender 
 |------|---------|-------------|
 | `3_6_1_1.blend` | §3.6.1.1 | Organic surface — Plane + Subdivision + Displace (Fig. 14) |
 | `3_6_1_2.blend` | §3.6.1.2 | Modular patterns — Grid + Geometry Nodes instancing (Fig. 15) |
-| `3_6_1_4.blend` | §3.6.1.4 | Techno-mechanical — Displace with grayscale image (Fig. 17) |
+| `3_6_1_4.blend` | §3.6.1.4 | AI-driven displacement — Plane + Subdivision + Displace using a ChatGPT-generated image as height map (Fig. 17). Same modifier stack as §3.6.1.1 but with an AI image instead of a procedural texture — no dedicated `.py` script: the conceptual choice is the image, not the code. |
 | `3_6_1_5.blend` | §3.6.1.5 | Fluid deformation — Icosphere + Geometry Nodes (Fig. 18) |
 | `Fibonacci.blend` | §3.3 | Fibonacci / golden-angle growth via Geometry Nodes (Fig. 10) |
 | `Fillotassi.blend` | §3.5.2 | Phyllotaxis — six procedural variations (Fig. 12–13) |

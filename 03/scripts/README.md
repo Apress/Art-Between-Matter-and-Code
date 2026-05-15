@@ -17,7 +17,9 @@
 | `kapoor_tall_tree.py` | `run_kapoor_tall_tree.bat` | §3.6.3.2 | Column of mirrored spheres (after Anish Kapoor) |
 
 **Windows:** double-click the `.bat` file — Blender is located automatically (checks versions 4.3–5.1).  
-**Manual:** Blender → Scripting workspace → Open file → `Alt+P`  
+**Manual:** Blender → Scripting workspace → Open file → `Alt+P`
+
+> **§3.6.1.4 — no script.** This section uses the same modifier stack as `organic_surface.py` (Plane + Subdivision + Displace + Subdivision) but replaces the procedural texture with a **ChatGPT-generated image** as the displacement height map. The conceptual point is the choice of the image, not the code — open `3_6_1_4.blend` directly and swap the image in the Displace modifier to experiment.  
 Or run from terminal: `blender --python script_name.py`
 
 ---
