@@ -61,6 +61,14 @@ def clear_scene():
     bpy.ops.object.delete()
 
 
+def move_to_collection(obj, col):
+    """Move obj into col, removing it from every collection it currently belongs to.
+    Works regardless of which collection Blender chose as the active one."""
+    for c in list(obj.users_collection):
+        c.objects.unlink(obj)
+    col.objects.link(obj)
+
+
 def make_material(name, color, roughness=0.6, metallic=0.0):
     mat = bpy.data.materials.new(name)
     mat.use_nodes = True
@@ -79,8 +87,7 @@ def build_piazza_base(col):
     floor = bpy.context.active_object
     floor.name = "Piazza_Floor"
     floor.data.materials.append(make_material("Floor_Mat", (0.85, 0.82, 0.75), roughness=0.3))
-    col.objects.link(floor)
-    bpy.context.scene.collection.objects.unlink(floor)
+    move_to_collection(floor, col)
     return floor
 
 
@@ -94,14 +101,14 @@ def build_arcade(col):
         p1.name = f"Pillar_L_{i}"
         p1.dimensions = (0.25, 0.4, 1.5)
         p1.data.materials.append(make_material(f"Pillar_{i}", (0.90, 0.86, 0.78), roughness=0.7))
-        col.objects.link(p1); bpy.context.scene.collection.objects.unlink(p1)
+        move_to_collection(p1, col)
 
         bpy.ops.mesh.primitive_cube_add(size=1, location=(x + 0.3, 0, 0.75))
         p2 = bpy.context.active_object
         p2.name = f"Pillar_R_{i}"
         p2.dimensions = (0.25, 0.4, 1.5)
         p2.data.materials.append(make_material(f"Pillar_{i}R", (0.90, 0.86, 0.78), roughness=0.7))
-        col.objects.link(p2); bpy.context.scene.collection.objects.unlink(p2)
+        move_to_collection(p2, col)
 
         # Arch lintel
         bpy.ops.mesh.primitive_cube_add(size=1, location=(x, 0, 1.55))
@@ -109,7 +116,7 @@ def build_arcade(col):
         lintel.name = f"Lintel_{i}"
         lintel.dimensions = (0.85, 0.4, 0.15)
         lintel.data.materials.append(make_material(f"Lintel_{i}", (0.92, 0.88, 0.80)))
-        col.objects.link(lintel); bpy.context.scene.collection.objects.unlink(lintel)
+        move_to_collection(lintel, col)
 
         arches.extend([p1, p2, lintel])
 
@@ -119,7 +126,7 @@ def build_arcade(col):
     frieze.name = "Frieze"
     frieze.dimensions = (4.5, 0.45, 0.3)
     frieze.data.materials.append(make_material("Frieze_Mat", (0.93, 0.90, 0.82), roughness=0.5))
-    col.objects.link(frieze); bpy.context.scene.collection.objects.unlink(frieze)
+    move_to_collection(frieze, col)
     arches.append(frieze)
     return arches
 
@@ -133,7 +140,7 @@ def build_displaced_volumes(col):
     sphere = bpy.context.active_object
     sphere.name = "Floating_Sphere"
     sphere.data.materials.append(make_material("Sphere_Mat", (0.4, 0.5, 0.8), roughness=0.2, metallic=0.3))
-    col.objects.link(sphere); bpy.context.scene.collection.objects.unlink(sphere)
+    move_to_collection(sphere, col)
     objs.append(sphere)
 
     # Tilted cube — right side
@@ -142,7 +149,7 @@ def build_displaced_volumes(col):
     cube.name = "Tilted_Cube"
     cube.rotation_euler = (0.3, 0.15, 0.8)
     cube.data.materials.append(make_material("Cube_Mat", (0.7, 0.3, 0.25), roughness=0.6))
-    col.objects.link(cube); bpy.context.scene.collection.objects.unlink(cube)
+    move_to_collection(cube, col)
     objs.append(cube)
 
     # Tall obelisk — back-left
@@ -151,7 +158,7 @@ def build_displaced_volumes(col):
     obelisk.name = "Obelisk"
     obelisk.dimensions = (0.2, 0.2, 2.4)
     obelisk.data.materials.append(make_material("Obelisk_Mat", (0.85, 0.80, 0.65), roughness=0.8))
-    col.objects.link(obelisk); bpy.context.scene.collection.objects.unlink(obelisk)
+    move_to_collection(obelisk, col)
     objs.append(obelisk)
 
     return objs
