@@ -82,12 +82,12 @@ def new_collection(name):
 
 
 def make_canvas(col, size):
-    # Use a thin box, not a plane: boolean DIFFERENCE requires closed (manifold) geometry.
-    # A flat plane has zero volume and produces only edge artefacts, not real cuts.
+    # Vertical canvas standing in the XZ plane (Y = thin direction, faces camera).
+    # Boolean DIFFERENCE requires a closed (manifold) volume, not a flat plane.
     bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
     canvas = bpy.context.active_object
     canvas.name = "FontanaCanvas"
-    canvas.dimensions = (size * 2, size * 2, 0.025)   # thin but solid
+    canvas.dimensions = (size * 2, 0.025, size * 2)   # X=width, Y=thin, Z=height
     col.objects.link(canvas)
     bpy.context.scene.collection.objects.unlink(canvas)
 
@@ -134,9 +134,9 @@ def make_blade_mesh(half_len, width, depth, curve_amp, rng):
 
     for i in range(N + 1):
         t = i / N                                           # 0 → 1 along the cut
-        x = -half_len + t * 2 * half_len
+        z = -half_len + t * 2 * half_len                   # Z: vertical extent
 
-        # --- spine: gentle sine that shifts the whole cut sideways ---
+        # --- spine: gentle sine that shifts the cut left/right ---
         spine = curve_amp * math.sin(t * math.pi * 2 + phi)
 
         # --- width: zero at both tips, maximum at centre ---
@@ -148,34 +148,35 @@ def make_blade_mesh(half_len, width, depth, curve_amp, rng):
         nl    = rng.uniform(-fray, fray)
         nr    = rng.uniform(-fray, fray)
 
-        yl = spine - w / 2 + nl
-        yr = spine + w / 2 + nr
-        if yr < yl + 0.001:                                # guarantee left stays left
-            yr = yl + 0.001
+        xl = spine - w / 2 + nl                            # left edge in X
+        xr = spine + w / 2 + nr                            # right edge in X
+        if xr < xl + 0.001:                                # guarantee left stays left
+            xr = xl + 0.001
 
-        tl.append(bm.verts.new((x, yl,  depth)))
-        tr.append(bm.verts.new((x, yr,  depth)))
-        bl.append(bm.verts.new((x, yl, -depth)))
-        br.append(bm.verts.new((x, yr, -depth)))
+        # blade runs along Z; X=width of cut, Y=depth through canvas
+        tl.append(bm.verts.new((xl,  depth, z)))
+        tr.append(bm.verts.new((xr,  depth, z)))
+        bl.append(bm.verts.new((xl, -depth, z)))
+        br.append(bm.verts.new((xr, -depth, z)))
 
     bm.verts.ensure_lookup_table()
 
     for i in range(N):
         # face winding chosen so normals point outward on every side
-        bm.faces.new([tl[i], tl[i+1], tr[i+1], tr[i]])   # top    (+Z)
-        bm.faces.new([bl[i], br[i], br[i+1], bl[i+1]])   # bottom (-Z)
-        bm.faces.new([tl[i], bl[i], bl[i+1], tl[i+1]])   # left   (-Y)
-        bm.faces.new([tr[i], tr[i+1], br[i+1], br[i]])   # right  (+Y)
+        bm.faces.new([tl[i], tl[i+1], tr[i+1], tr[i]])   # front  (+Y)
+        bm.faces.new([bl[i], br[i], br[i+1], bl[i+1]])   # back   (-Y)
+        bm.faces.new([tl[i], bl[i], bl[i+1], tl[i+1]])   # left   (-X)
+        bm.faces.new([tr[i], tr[i+1], br[i+1], br[i]])   # right  (+X)
 
-    bm.faces.new([tl[0], tr[0], br[0], bl[0]])            # start cap (-X)
-    bm.faces.new([tl[N], bl[N], br[N], tr[N]])            # end cap   (+X)
+    bm.faces.new([tl[0], tr[0], br[0], bl[0]])            # bottom cap (-Z)
+    bm.faces.new([tl[N], bl[N], br[N], tr[N]])            # top cap    (+Z)
 
     bm.normal_update()
     return bm
 
 
-def make_blade(col, index, y_pos, canvas_size, length, width, depth, angle_deg):
-    """Create an organic Fontana-cut cutter: curved, tapered, frayed."""
+def make_blade(col, index, x_pos, canvas_size, length, width, depth, angle_deg):
+    """Create an organic Fontana-cut cutter: vertical, curved, tapered, frayed."""
     rng        = random.Random(SEED + index * 13)
     half_len   = canvas_size * length
     curve_amp  = canvas_size * rng.uniform(0.025, 0.07)  # 2.5–7 % of canvas → visible arc
@@ -186,8 +187,8 @@ def make_blade(col, index, y_pos, canvas_size, length, width, depth, angle_deg):
     bm.free()
 
     blade                = bpy.data.objects.new(f"Cut_{index:02d}", mesh)
-    blade.location       = (0, y_pos, 0)
-    blade.rotation_euler = Euler((0, 0, math.radians(angle_deg)), "XYZ")
+    blade.location       = (x_pos, 0, 0)                          # horizontal spacing
+    blade.rotation_euler = Euler((0, math.radians(angle_deg), 0), "XYZ")  # slight lean
 
     col.objects.link(blade)                        # keep it in Fontana_Cuts collection
 
@@ -225,16 +226,18 @@ def add_canvas_material_displacement(canvas):
 
 
 def add_camera_and_light(canvas_size):
-    bpy.ops.object.camera_add(location=(0, -canvas_size * 3.5, canvas_size * 0.8))
+    # Camera directly in front of the vertical canvas, looking along +Y
+    bpy.ops.object.camera_add(location=(0, -canvas_size * 3.5, 0))
     cam = bpy.context.active_object
-    cam.rotation_euler = Euler((math.radians(75), 0, 0), "XYZ")
+    cam.rotation_euler = Euler((math.radians(90), 0, 0), "XYZ")
     bpy.context.scene.camera = cam
 
-    bpy.ops.object.light_add(type="AREA", location=(canvas_size, -canvas_size, canvas_size * 2))
+    # Area light from upper-left — raking light to emphasise the cut edges
+    bpy.ops.object.light_add(type="AREA", location=(-canvas_size, -canvas_size, canvas_size))
     light = bpy.context.active_object
-    light.data.energy = 400
+    light.data.energy = 500
     light.data.size = canvas_size * 2
-    light.rotation_euler = Euler((math.radians(45), 0, math.radians(30)), "XYZ")
+    light.rotation_euler = Euler((math.radians(50), 0, math.radians(-30)), "XYZ")
 
 
 def main():
@@ -248,10 +251,10 @@ def main():
     positions = cut_positions(NUM_CUTS, CANVAS_SIZE, SPACING, SEED)
 
     blades = []
-    for i, y in enumerate(positions):
+    for i, x in enumerate(positions):
         blade = make_blade(
             col_cuts, i,
-            y_pos      = y,
+            x_pos       = x,
             canvas_size = CANVAS_SIZE,
             length      = CUT_LENGTH,
             width       = CUT_WIDTH,
