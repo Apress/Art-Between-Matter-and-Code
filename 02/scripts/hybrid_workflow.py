@@ -107,14 +107,15 @@ def phase1_maquette():
     disp.strength   = 0.18
     disp.texture_coords = "LOCAL"
 
-    # Flatten base (simulate resting on surface)
-    bpy.ops.object.mode_set(mode="EDIT")
-    bm = bmesh.from_edit_mesh(obj.data)
+    # Flatten base (simulate resting on surface) — bmesh, no mode switch needed
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
     for v in bm.verts:
         if v.co.z < -0.7:
             v.co.z = -0.7
-    bmesh.update_edit_mesh(obj.data)
-    bpy.ops.object.mode_set(mode="OBJECT")
+    bm.to_mesh(obj.data)
+    bm.free()
+    obj.data.update()
 
     obj.data.materials.append(make_material("Clay_Mat", PHASE_COLORS[1]))
     print("[hybrid_workflow] Phase 1 (Manual): clay maquette created.")
@@ -191,12 +192,14 @@ def phase4_fabrication(source_obj):
         except Exception as e:
             print(f"  [warn] Could not apply '{mod.name}': {e}")
 
-    # Merge doubles (remove_doubles was renamed in Blender 4.x)
-    bpy.ops.object.mode_set(mode="EDIT")
-    bpy.ops.mesh.select_all(action="SELECT")
-    bpy.ops.mesh.merge_by_distance(threshold=0.001)
-    bpy.ops.mesh.normals_make_consistent(inside=False)
-    bpy.ops.object.mode_set(mode="OBJECT")
+    # Merge doubles + recalculate normals via bmesh — no mode switch needed
+    bm = bmesh.new()
+    bm.from_mesh(source_obj.data)
+    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=0.001)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    bm.to_mesh(source_obj.data)
+    bm.free()
+    source_obj.data.update()
 
     # Scale to real-world: 20cm diameter
     target_scale = 0.20 / max(source_obj.dimensions)

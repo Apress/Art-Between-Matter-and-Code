@@ -88,34 +88,37 @@ def apply_transforms(obj):
 
 
 def merge_by_distance(obj, threshold):
-    bpy.ops.object.mode_set(mode="EDIT")
-    bm = bmesh.from_edit_mesh(obj.data)
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
     before = len(bm.verts)
     bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=threshold)
     after = len(bm.verts)
-    bmesh.update_edit_mesh(obj.data)
-    bpy.ops.object.mode_set(mode="OBJECT")
+    bm.to_mesh(obj.data)
+    bm.free()
+    obj.data.update()
     print(f"  [cleanup] Merged by distance {threshold*1000:.1f}mm: {before} -> {after} verts "
           f"({before - after} removed)")
 
 
 def recalculate_normals(obj):
-    bpy.ops.object.mode_set(mode="EDIT")
-    bpy.ops.mesh.select_all(action="SELECT")
-    bpy.ops.mesh.normals_make_consistent(inside=False)
-    bpy.ops.object.mode_set(mode="OBJECT")
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    bm.to_mesh(obj.data)
+    bm.free()
+    obj.data.update()
     print("  [cleanup] Normals recalculated (outside-facing).")
 
 
 def fill_holes(obj, max_hole_verts=50):
-    bpy.ops.object.mode_set(mode="EDIT")
-    bpy.ops.mesh.select_all(action="DESELECT")
-    bpy.ops.mesh.select_non_manifold(
-        extend=False, use_wire=False, use_boundary=True,
-        use_multi_face=False, use_non_contiguous=False, use_verts=False
-    )
-    bpy.ops.mesh.fill_holes(sides=max_hole_verts)
-    bpy.ops.object.mode_set(mode="OBJECT")
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    boundary_edges = [e for e in bm.edges if e.is_boundary]
+    if boundary_edges:
+        bmesh.ops.holes_fill(bm, edges=boundary_edges, sides=max_hole_verts)
+    bm.to_mesh(obj.data)
+    bm.free()
+    obj.data.update()
     print(f"  [cleanup] Holes filled (max {max_hole_verts} verts per hole).")
 
 

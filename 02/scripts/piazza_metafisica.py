@@ -179,21 +179,16 @@ def build_displaced_volumes(col):
 
 def refine_floor_mesh(floor_obj):
     """Add edge loops and slight wave displacement to the floor."""
-    bpy.ops.object.select_all(action="DESELECT")
-    bpy.context.view_layer.objects.active = floor_obj
-    floor_obj.select_set(True)          # mode_set requires active + selected
-    bpy.ops.object.mode_set(mode="EDIT")
-
-    bm = bmesh.from_edit_mesh(floor_obj.data)
-    # Subdivide for more resolution
-    bmesh.ops.subdivide_edges(bm, edges=bm.edges, cuts=6, use_grid_fill=True)
-    # Slight elevation variation — wave pattern
     import math as m
+    # Use bmesh directly — no mode switch needed
+    bm = bmesh.new()
+    bm.from_mesh(floor_obj.data)
+    bmesh.ops.subdivide_edges(bm, edges=bm.edges, cuts=6, use_grid_fill=True)
     for v in bm.verts:
         v.co.z += 0.012 * m.sin(v.co.x * 3.0) * m.cos(v.co.y * 2.5)
-    bmesh.update_edit_mesh(floor_obj.data)
-
-    bpy.ops.object.mode_set(mode="OBJECT")
+    bm.to_mesh(floor_obj.data)
+    bm.free()
+    floor_obj.data.update()
 
 
 # ── STAGE 3: Sculpt — Surface Gesture ────────────────────────────────────────
