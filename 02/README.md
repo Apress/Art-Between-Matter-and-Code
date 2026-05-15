@@ -53,13 +53,15 @@
 
 ## Scripts (`scripts/`)
 
-**Windows:** double-click the `.bat` launcher. All scripts require Blender 5.1 (auto-detected).
+**Windows:** double-click the `.bat` launcher.  
+**macOS / Linux:** run the `.sh` launcher from Terminal (`chmod +x run_piazza_metafisica.sh` on first use).  
+All scripts require Blender 5.x (auto-detected).
 
-| Script | Launcher | Section | Description |
-|--------|----------|---------|-------------|
-| `piazza_metafisica.py` | `run_piazza_metafisica.bat` | §2.5.1 | Builds the *Piazza Metafisica* hybrid sculpture demonstrating Object / Edit / Sculpt Mode stages (Figs 15–17) |
-| `hybrid_workflow.py` | `run_hybrid_workflow.bat` | §2.3 | Four-phase hybrid workflow: Manual → Digital → Generative → Fabrication. Companion to Fig. 11 |
-| `scan_cleanup.py` | `run_scan_cleanup.bat` | §2.1.2.1.2–3 | Automates photogrammetry mesh post-processing: merge doubles, fill holes, voxel remesh, subdivision |
+| Script | Windows | macOS / Linux | Section | Description |
+|--------|---------|---------------|---------|-------------|
+| `piazza_metafisica.py` | `run_piazza_metafisica.bat` | `run_piazza_metafisica.sh` | §2.5.1 | Builds the *Piazza Metafisica* hybrid sculpture demonstrating Object / Edit / Sculpt Mode stages (Figs 15–17) |
+| `hybrid_workflow.py` | `run_hybrid_workflow.bat` | `run_hybrid_workflow.sh` | §2.3 | Four-phase hybrid workflow: Manual → Digital → Generative → Fabrication. Companion to Fig. 11 |
+| `scan_cleanup.py` | `run_scan_cleanup.bat` | `run_scan_cleanup.sh` | §2.1.2.1.2–3 | Automates photogrammetry mesh post-processing: merge doubles, fill holes, voxel remesh, subdivision |
 
 ---
 
