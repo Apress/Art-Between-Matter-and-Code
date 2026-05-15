@@ -59,15 +59,12 @@ def load_into_editor():
                 for area in screen.areas:
                     if area.type == 'TEXT_EDITOR':
                         area.spaces.active.text = text
-        for ws in bpy.data.workspaces:
-            if "Script" in ws.name:
-                try:
-                    bpy.context.window.workspace = ws
-                except Exception:
-                    pass
-                break
+        script_ws = next((ws for ws in bpy.data.workspaces if "Script" in ws.name), None)
+        if script_ws:
+            for window in bpy.context.window_manager.windows:
+                window.workspace = script_ws
 
-    bpy.app.timers.register(_switch, first_interval=0.1)
+    bpy.app.timers.register(_switch, first_interval=0.5)
 
 
 def get_active_mesh():

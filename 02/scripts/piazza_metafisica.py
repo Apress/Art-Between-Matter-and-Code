@@ -52,15 +52,12 @@ def load_into_editor():
                 for area in screen.areas:
                     if area.type == 'TEXT_EDITOR':
                         area.spaces.active.text = text
-        for ws in bpy.data.workspaces:
-            if "Script" in ws.name:
-                try:
-                    bpy.context.window.workspace = ws
-                except Exception:
-                    pass
-                break
+        script_ws = next((ws for ws in bpy.data.workspaces if "Script" in ws.name), None)
+        if script_ws:
+            for window in bpy.context.window_manager.windows:
+                window.workspace = script_ws
 
-    bpy.app.timers.register(_switch, first_interval=0.1)
+    bpy.app.timers.register(_switch, first_interval=0.5)
 
 
 def clear_scene():
@@ -277,6 +274,13 @@ def main():
             print("[piazza_metafisica] Stage 3 (Sculpt) — sphere prepared for gestural sculpting.")
 
     setup_render()
+
+    # Ensure we always finish in Object Mode regardless of which stages ran
+    try:
+        bpy.ops.object.mode_set(mode="OBJECT")
+    except Exception:
+        pass
+
     print("[piazza_metafisica] Scene ready. Use Blender's Sculpt Mode to add brush detail.")
     load_into_editor()
 

@@ -48,9 +48,9 @@ PHASE_COLORS = {
 
 def load_into_editor():
     """Load this file into Blender's text editor and switch to Scripting workspace.
-    Uses a timer to defer the UI switch until after Blender's event loop has
-    started — required when the script is launched via --python from a .bat/.sh
-    launcher, where bpy.context.window is not yet ready at script execution time."""
+    Uses window_manager.windows (always available) instead of bpy.context.window
+    (unreliable in timer context). Timer defers the switch until the UI event
+    loop is running — necessary when launched via --python from a .bat/.sh."""
     try:
         filepath = os.path.abspath(__file__)
     except NameError:
@@ -64,15 +64,12 @@ def load_into_editor():
                 for area in screen.areas:
                     if area.type == 'TEXT_EDITOR':
                         area.spaces.active.text = text
-        for ws in bpy.data.workspaces:
-            if "Script" in ws.name:
-                try:
-                    bpy.context.window.workspace = ws
-                except Exception:
-                    pass
-                break
+        script_ws = next((ws for ws in bpy.data.workspaces if "Script" in ws.name), None)
+        if script_ws:
+            for window in bpy.context.window_manager.windows:
+                window.workspace = script_ws
 
-    bpy.app.timers.register(_switch, first_interval=0.1)
+    bpy.app.timers.register(_switch, first_interval=0.5)
 
 
 def clear_scene():
@@ -260,6 +257,13 @@ def main():
         obj = phase4_fabrication(obj)
 
     setup_render()
+
+    # Ensure we always finish in Object Mode regardless of which phases ran
+    try:
+        bpy.ops.object.mode_set(mode="OBJECT")
+    except Exception:
+        pass
+
     print("[hybrid_workflow] Complete. Each phase is visible as a modifier stack state.")
     print("  To inspect individual phases: set END_PHASE=1, 2, 3, or 4 and re-run.")
     load_into_editor()
