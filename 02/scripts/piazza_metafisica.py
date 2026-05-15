@@ -41,15 +41,19 @@ SUBDIVISIONS  = 2        # subdivision surface level before sculpt stage
 def load_into_editor():
     try:
         filepath = os.path.abspath(__file__)
-        name     = os.path.basename(filepath)
-        if name not in bpy.data.texts:
-            bpy.ops.text.open(filepath=filepath)
-        for ws in bpy.data.workspaces:
-            if "Script" in ws.name:
-                bpy.context.window.workspace = ws
-                break
-    except (NameError, Exception):
-        pass
+    except NameError:
+        return
+    name = os.path.basename(filepath)
+    text = bpy.data.texts[name] if name in bpy.data.texts else bpy.data.texts.load(filepath)
+    for ws in bpy.data.workspaces:
+        for screen in ws.screens:
+            for area in screen.areas:
+                if area.type == 'TEXT_EDITOR':
+                    area.spaces.active.text = text
+    for ws in bpy.data.workspaces:
+        if "Script" in ws.name:
+            bpy.context.window.workspace = ws
+            break
 
 
 def clear_scene():
