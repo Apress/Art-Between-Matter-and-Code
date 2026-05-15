@@ -46,31 +46,38 @@ NOISE_STRENGTH = 0.015    # displacement strength if ADD_ARTISTIC=True
 
 
 def load_into_editor():
+    """Switch to the Scripting workspace and load this file into the text editor.
+
+    Uses a 2-second timer so it fires AFTER Blender has finished initialising
+    its default workspace (depsgraph handlers fire during startup and get
+    overridden by Blender's post-startup workspace reset).
+    """
     try:
         filepath = os.path.abspath(__file__)
     except NameError:
-        return
+        return   # running from the text editor — already in Scripting
     name = os.path.basename(filepath)
-    text = bpy.data.texts[name] if name in bpy.data.texts else bpy.data.texts.load(filepath)
+    text = bpy.data.texts.get(name) or bpy.data.texts.load(filepath)
 
-    def _switch(scene, depsgraph):
+    def _switch():
         for ws in bpy.data.workspaces:
             for screen in ws.screens:
                 for area in screen.areas:
                     if area.type == 'TEXT_EDITOR':
                         area.spaces.active.text = text
-        script_ws = next((ws for ws in bpy.data.workspaces if "Script" in ws.name), None)
+        script_ws = next(
+            (ws for ws in bpy.data.workspaces if "Script" in ws.name), None
+        )
         if script_ws:
             for window in bpy.context.window_manager.windows:
                 try:
                     with bpy.context.temp_override(window=window):
                         bpy.ops.screen.workspace_set(name=script_ws.name)
-                except Exception:
-                    window.workspace = script_ws  # fallback for older builds
-        if _switch in bpy.app.handlers.depsgraph_update_post:
-            bpy.app.handlers.depsgraph_update_post.remove(_switch)
+                except Exception as e:
+                    print(f"  [load_into_editor] workspace_set: {e}")
+        return None
 
-    bpy.app.handlers.depsgraph_update_post.append(_switch)
+    bpy.app.timers.register(_switch, first_interval=2.0)
 
 
 def get_active_mesh():

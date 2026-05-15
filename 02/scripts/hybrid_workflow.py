@@ -47,37 +47,44 @@ PHASE_COLORS = {
 
 
 def load_into_editor():
-    """Load this file into the Scripting workspace after Blender's UI is ready.
-    Uses depsgraph_update_post handler — fires in the main UI thread with full
-    context, more reliable than timers when launched via --python from .bat/.sh."""
+    """Switch to the Scripting workspace and load this file into the text editor.
+
+    Uses a 2-second timer so it fires AFTER Blender has finished initialising
+    its default workspace (depsgraph handlers fire during startup and get
+    overridden by Blender's post-startup workspace reset).
+    """
     try:
         filepath = os.path.abspath(__file__)
     except NameError:
-        return
+        return   # running from the text editor — already in Scripting
     name = os.path.basename(filepath)
-    text = bpy.data.texts[name] if name in bpy.data.texts else bpy.data.texts.load(filepath)
+    text = bpy.data.texts.get(name) or bpy.data.texts.load(filepath)
 
-    def _switch(scene, depsgraph):
-        # Assign text to every text editor area
+    def _switch():
+        # 1. Put the script text into every open text-editor area
         for ws in bpy.data.workspaces:
             for screen in ws.screens:
                 for area in screen.areas:
                     if area.type == 'TEXT_EDITOR':
                         area.spaces.active.text = text
-        # Switch all windows to the Scripting workspace via operator (requires context)
-        script_ws = next((ws for ws in bpy.data.workspaces if "Script" in ws.name), None)
+
+        # 2. Switch every window to the Scripting workspace via the official
+        #    operator (direct window.workspace assignment is silently ignored
+        #    without a proper window context; temp_override provides it)
+        script_ws = next(
+            (ws for ws in bpy.data.workspaces if "Script" in ws.name), None
+        )
         if script_ws:
             for window in bpy.context.window_manager.windows:
                 try:
                     with bpy.context.temp_override(window=window):
                         bpy.ops.screen.workspace_set(name=script_ws.name)
-                except Exception:
-                    window.workspace = script_ws  # fallback for older builds
-        # One-shot: remove itself after first execution
-        if _switch in bpy.app.handlers.depsgraph_update_post:
-            bpy.app.handlers.depsgraph_update_post.remove(_switch)
+                except Exception as e:
+                    print(f"  [load_into_editor] workspace_set: {e}")
 
-    bpy.app.handlers.depsgraph_update_post.append(_switch)
+        return None  # one-shot — do not repeat
+
+    bpy.app.timers.register(_switch, first_interval=2.0)
 
 
 def clear_scene():
