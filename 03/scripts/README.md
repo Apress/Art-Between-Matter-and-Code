@@ -5,18 +5,19 @@
 
 ## Quick start
 
-| Script | Section | Description |
-|--------|---------|-------------|
-| `organic_surface.py` | §3.6.1.1 | Displace modifier — skin, terrain, alien membranes |
-| `modular_patterns.py` | §3.6.1.2 | Geometry Nodes instancing with noise-driven density |
-| `lattice_structures.py` | §3.6.1.3 | Wireframe + Remesh — bone, coral, architectural trusses |
-| `fluid_geometry.py` | §3.6.1.5 | Animated noise deformation — flowing organic form |
-| `fibonacci_growth.py` | §3.3 | Golden-angle spiral — phyllotaxis in 3D |
-| `picasso_gesture.py` | §3.6.2 | Bézier curve → volumetric light trace, animated |
-| `cragg_stack.py` | §3.6.3.1 | Stratified torsional surfaces (after Tony Cragg) |
-| `kapoor_tall_tree.py` | §3.6.3.2 | Column of mirrored spheres (after Anish Kapoor) |
+| Script | Launcher (Windows) | Section | Description |
+|--------|--------------------|---------|-------------|
+| `organic_surface.py` | `run_organic_surface.bat` | §3.6.1.1 | Displace modifier — skin, terrain, alien membranes |
+| `modular_patterns.py` | `run_modular_patterns.bat` | §3.6.1.2 | Geometry Nodes instancing with noise-driven density |
+| `lattice_structures.py` | `run_lattice_structures.bat` | §3.6.1.3 | Wireframe + Remesh — bone, coral, architectural trusses |
+| `fluid_geometry.py` | `run_fluid_geometry.bat` | §3.6.1.5 | Animated noise deformation — flowing organic form |
+| `fibonacci_growth.py` | `run_fibonacci_growth.bat` | §3.3 | Golden-angle spiral — phyllotaxis in 3D |
+| `picasso_gesture.py` | `run_picasso_gesture.bat` | §3.6.2 | Bézier gesture → volumetric light trace, animated |
+| `cragg_stack.py` | `run_cragg_stack.bat` | §3.6.3.1 | Stratified torsional surfaces (after Tony Cragg) |
+| `kapoor_tall_tree.py` | `run_kapoor_tall_tree.bat` | §3.6.3.2 | Column of mirrored spheres (after Anish Kapoor) |
 
-**Usage:** Blender → Scripting workspace → Open file → `Alt+P`  
+**Windows:** double-click the `.bat` file — Blender is located automatically (checks versions 4.3–5.1).  
+**Manual:** Blender → Scripting workspace → Open file → `Alt+P`  
 Or run from terminal: `blender --python script_name.py`
 
 ---
