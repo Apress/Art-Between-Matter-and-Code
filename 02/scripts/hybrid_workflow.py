@@ -62,11 +62,29 @@ def load_into_editor():
     text = bpy.data.texts.get(name) or bpy.data.texts.load(filepath)
 
     def _set_text():
+        # Load script into text editor
         for ws in bpy.data.workspaces:
             for screen in ws.screens:
                 for area in screen.areas:
                     if area.type == 'TEXT_EDITOR':
                         area.spaces.active.text = text
+        # Frame all objects in every 3D viewport
+        wm = bpy.context.window_manager
+        win = wm.windows[0] if wm.windows else None
+        for screen in bpy.data.screens:
+            for area in screen.areas:
+                if area.type != 'VIEW_3D':
+                    continue
+                for region in area.regions:
+                    if region.type != 'WINDOW':
+                        continue
+                    try:
+                        with bpy.context.temp_override(
+                            window=win, screen=screen, area=area, region=region
+                        ):
+                            bpy.ops.view3d.view_selected()
+                    except Exception:
+                        pass
         return None  # one-shot
 
     bpy.app.timers.register(_set_text, first_interval=0.5)
@@ -264,11 +282,10 @@ def main():
 
     setup_render()
 
-    # Ensure Object Mode at the end
-    try:
-        bpy.ops.object.mode_set(mode="OBJECT")
-    except Exception:
-        pass
+    # Select the main object so it is visible and centred on first open
+    if obj:
+        bpy.context.view_layer.objects.active = obj
+        obj.select_set(True)
 
     print("[hybrid_workflow] Complete. Each phase is visible as a modifier stack state.")
     print("  To inspect individual phases: set END_PHASE=1, 2, 3, or 4 and re-run.")

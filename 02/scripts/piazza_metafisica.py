@@ -72,7 +72,7 @@ def load_into_editor():
                         with bpy.context.temp_override(
                             window=win, screen=screen, area=area, region=region
                         ):
-                            bpy.ops.view3d.view_all()
+                            bpy.ops.view3d.view_selected()
                     except Exception:
                         pass
         return None  # one-shot
@@ -293,10 +293,12 @@ def main():
 
     setup_render()
 
-    # Select a central object so it is active when the viewport opens
+    # Select all mesh objects in the collection so view_selected() frames the whole scene
+    for obj in col.objects:
+        if obj.type == 'MESH':
+            obj.select_set(True)
     if floor is not None:
         bpy.context.view_layer.objects.active = floor
-        floor.select_set(True)
 
     print("[piazza_metafisica] Scene ready. Use Blender's Sculpt Mode to add brush detail.")
     load_into_editor()
