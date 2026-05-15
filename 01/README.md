@@ -77,14 +77,65 @@
 ## Scripts (`scripts/`)
 
 **Windows:** double-click the `.bat` launcher to run each script directly.  
-**Blender scripts** open Blender automatically.
+**Blender scripts** open Blender automatically and load the script into the Scripting workspace so you can edit the CONFIG block.
 
-| Script | Windows | macOS / Linux | Runs in | Description |
-|--------|---------|---------------|---------|-------------|
-| `fontana_cut.py` | `run_fontana_cut.bat` | `run_fontana_cut.sh` | Blender 5.x | Procedural boolean cuts on a plane — Fontana's *Concetto Spaziale* as parametric operation. Parameters: `NUM_CUTS`, `CUT_ANGLE`, `SPACING`. |
-| `parametric_space.py` | `run_parametric_space.bat` | `run_parametric_space.sh` | Blender 5.x | Builds a deformed spatial grid from a field equation. Companion to `fig_01_spazialismo_fontana.blend`. Profiles: `radial`, `linear`, `turbulent`. |
+| Script | Windows | macOS / Linux | Runs in |
+|--------|---------|---------------|---------|
+| `fontana_cut.py` | `run_fontana_cut.bat` | `run_fontana_cut.sh` | Blender 5.x |
+| `parametric_space.py` | `run_parametric_space.bat` | `run_parametric_space.sh` | Blender 5.x |
+| `reproduction_matrix.py` | `run_reproduction_matrix.bat` | `run_reproduction_matrix.sh` | Blender 5.x |
 
-**macOS / Linux:** make the script executable before first run: `chmod +x run_fontana_cut.sh`
+**macOS / Linux:** make launchers executable before first run: `chmod +x run_*.sh`
+
+---
+
+### `fontana_cut.py` — Procedural Fontana Cut
+
+Parametric reinterpretation of Fontana's *Concetto Spaziale, Attese*. Builds a vertical linen canvas (manifold cube) and carves organic boolean cuts into it. Each blade is a custom bmesh volume with a curved spine (sine), tapered width (zero at both tips), and independent edge noise reproducing the *slabbrato* — the frayed, torn quality of a real Fontana cut.
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `NUM_CUTS` | `5` | Number of cuts (Fontana typically used 1–7) |
+| `CUT_ANGLE` | `10.0` | Lean of each blade from vertical in degrees — alternates ± |
+| `CUT_DEPTH` | `0.08` | How far the blade protrudes through the canvas (Y axis) |
+| `CUT_WIDTH` | `0.015` | Blade thickness — thin = sharp cut, wider = torn gap |
+| `CUT_LENGTH` | `0.72` | Cut length as fraction of canvas height (0.0–1.0) |
+| `CANVAS_SIZE` | `2.0` | Canvas half-extent in Blender units (total = 2 × this) |
+| `SPACING` | `"even"` | Cut distribution: `"even"` · `"random"` · `"golden"` |
+| `SEED` | `42` | Random seed — change to explore different organic variations |
+
+---
+
+### `parametric_space.py` — Space as Generative Field
+
+Translates the chapter's central concept into geometry: a dense vertex grid deformed by a sinusoidal field equation. Designed to run **in the same Blender session** as `fontana_cut.py` — it preserves the FontanaCanvas and adds the ParametricSpace object alongside it.
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `GRID_DENSITY` | `40` | Vertices per side — 40 = 1 600 points (resolution of spatial fabric) |
+| `GRID_SIZE` | `4.0` | Total extent of the field in Blender units |
+| `WAVE_AMPLITUDE` | `0.35` | Height of field deformation — spatial energy intensity |
+| `WAVE_FREQUENCY` | `2.5` | Oscillation cycles across the grid |
+| `FIELD_PROFILE` | `"radial"` | Field shape: `"radial"` (concentric) · `"linear"` (directional) · `"turbulent"` (noise) |
+| `NOISE_SCALE` | `1.8` | Turbulence detail scale — active when `FIELD_PROFILE = "turbulent"` |
+| `NOISE_DEPTH` | `4` | Octaves of turbulence noise detail |
+| `SOLIDIFY` | `True` | Add thickness to the surface (print / fabrication ready) |
+| `SOLIDIFY_THICK` | `0.02` | Solidify thickness in Blender units |
+| `EMIT_PARTICLES` | `False` | Add a particle system to visualise energy propagation |
+
+---
+
+### `reproduction_matrix.py` — The Aura and Its Loss
+
+Three-dimensional visualisation of Walter Benjamin's thesis on mechanical reproduction. A row of `NUM_COPIES` objects represents successive generations: the original (left) is pristine — warm amber material, full form. Moving right, Musgrave procedural noise increases progressively, eroding the surface. Colour shifts from warm ochre to cold blue-grey, mapping aura presence to material temperature.
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `NUM_COPIES` | `7` | Total objects — original + N−1 reproductions |
+| `BASE_FORM` | `"sphere"` | Starting shape: `"sphere"` · `"cube"` · `"torus"` |
+| `MAX_NOISE` | `0.55` | Maximum displacement strength on the last copy (0.0 = identical copies) |
+| `SPACING` | `1.6` | Distance between objects in Blender units |
+| `SEED` | `17` | Random seed — each value produces a different degradation path |
 
 ## Models (`models/`)
 
