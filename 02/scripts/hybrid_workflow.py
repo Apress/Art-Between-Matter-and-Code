@@ -64,11 +64,15 @@ def load_into_editor():
                 for area in screen.areas:
                     if area.type == 'TEXT_EDITOR':
                         area.spaces.active.text = text
-        # Switch all windows to the Scripting workspace
+        # Switch all windows to the Scripting workspace via operator (requires context)
         script_ws = next((ws for ws in bpy.data.workspaces if "Script" in ws.name), None)
         if script_ws:
             for window in bpy.context.window_manager.windows:
-                window.workspace = script_ws
+                try:
+                    with bpy.context.temp_override(window=window):
+                        bpy.ops.screen.workspace_set(name=script_ws.name)
+                except Exception:
+                    window.workspace = script_ws  # fallback for older builds
         # One-shot: remove itself after first execution
         if _switch in bpy.app.handlers.depsgraph_update_post:
             bpy.app.handlers.depsgraph_update_post.remove(_switch)
@@ -77,7 +81,10 @@ def load_into_editor():
 
 
 def clear_scene():
-    # Force Object Mode first — script may be re-run while in Edit/Sculpt Mode
+    # Force Object Mode — robust against Edit/Sculpt Mode and startup files
+    # saved in Edit Mode (no active object → mode_set would fail silently)
+    if bpy.context.scene.objects:
+        bpy.context.view_layer.objects.active = list(bpy.context.scene.objects)[0]
     try:
         bpy.ops.object.mode_set(mode="OBJECT")
     except Exception:

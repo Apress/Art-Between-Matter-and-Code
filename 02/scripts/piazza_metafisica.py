@@ -55,7 +55,11 @@ def load_into_editor():
         script_ws = next((ws for ws in bpy.data.workspaces if "Script" in ws.name), None)
         if script_ws:
             for window in bpy.context.window_manager.windows:
-                window.workspace = script_ws
+                try:
+                    with bpy.context.temp_override(window=window):
+                        bpy.ops.screen.workspace_set(name=script_ws.name)
+                except Exception:
+                    window.workspace = script_ws  # fallback for older builds
         if _switch in bpy.app.handlers.depsgraph_update_post:
             bpy.app.handlers.depsgraph_update_post.remove(_switch)
 
@@ -63,6 +67,8 @@ def load_into_editor():
 
 
 def clear_scene():
+    if bpy.context.scene.objects:
+        bpy.context.view_layer.objects.active = list(bpy.context.scene.objects)[0]
     try:
         bpy.ops.object.mode_set(mode="OBJECT")
     except Exception:
