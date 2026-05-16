@@ -8,19 +8,16 @@
 | Script | Launcher (Windows) | Section | Description |
 |--------|--------------------|---------|-------------|
 | `organic_surface.py` | `run_organic_surface.bat` | §3.6.1.1 | Displace modifier — skin, terrain, alien membranes |
-| `modular_patterns.py` | `run_modular_patterns.bat` | §3.6.1.2 | Geometry Nodes instancing with noise-driven density |
 | `lattice_structures.py` | `run_lattice_structures.bat` | §3.6.1.3 | Wireframe + Remesh — bone, coral, architectural trusses |
 | `fluid_geometry.py` | `run_fluid_geometry.bat` | §3.6.1.5 | Animated noise deformation — flowing organic form |
 | `fibonacci_growth.py` | `run_fibonacci_growth.bat` | §3.3 | Golden-angle spiral — phyllotaxis in 3D |
 | `picasso_gesture.py` | `run_picasso_gesture.bat` | §3.6.2 | Bézier gesture → volumetric light trace, animated |
-| `cragg_stack.py` | `run_cragg_stack.bat` | §3.6.3.1 | Stratified torsional surfaces (after Tony Cragg) |
-| `kapoor_tall_tree.py` | `run_kapoor_tall_tree.bat` | §3.6.3.2 | Column of mirrored spheres (after Anish Kapoor) |
 
 **Windows:** double-click the `.bat` file — Blender is located automatically (checks versions 4.3–5.1).  
-**Manual:** Blender → Scripting workspace → Open file → `Alt+P`
-
-> **§3.6.1.4 — no script.** This section uses the same modifier stack as `organic_surface.py` (Plane + Subdivision + Displace + Subdivision) but replaces the procedural texture with a **ChatGPT-generated image** as the displacement height map. The conceptual point is the choice of the image, not the code — open `3_6_1_4.blend` directly and swap the image in the Displace modifier to experiment.  
+**Manual:** Blender → Scripting workspace → Open file → `Alt+P`  
 Or run from terminal: `blender --python script_name.py`
+
+> **§3.6.1.4 — no script.** This section uses the same modifier stack as `organic_surface.py` (Plane + Subdivision + Displace + Subdivision) but replaces the procedural texture with a **ChatGPT-generated image** as the displacement height map. The conceptual point is the choice of the image, not the code — open `3_6_1_4.blend` directly and swap the image in the Displace modifier to experiment.
 
 ---
 
@@ -44,26 +41,6 @@ Transforms a flat plane into a complex relief by applying procedural displacemen
 | `SUB_POST` | `2` | Subdivision levels after displacement |
 
 > **Tip:** Change `TEXTURE_TYPE` to `"VORONOI"` for a cellular, skin-like result; use `"CLOUDS"` for softer, geological undulations.
-
----
-
-## `modular_patterns.py` — Repeating Patterns with Geometry Nodes
-
-**§3.6.1.2 · Figure 15**
-
-Distributes sphere instances across a grid surface using a Geometry Nodes network. Density is driven by a Noise Texture, creating organic clusters that shift between ordered grids and chaotic arrangements.
-
-Node graph: `Group Input → Distribute Points on Faces (noise density) → Instance on Points (random scale) → Realize Instances → Group Output`
-
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `DENSITY_MAX` | `2.0` | Maximum instance density (points/m²) |
-| `SCALE_MIN` | `0.08` | Minimum random scale |
-| `SCALE_MAX` | `0.22` | Maximum random scale |
-| `NOISE_SCALE` | `0.3` | Spatial frequency of density variation |
-| `MODULE_RADIUS` | `0.12` | Radius of the sphere module |
-
-> **Tip:** Replace the `Module_Sphere` object with any mesh (cone, cube, custom shape) for a completely different pattern vocabulary.
 
 ---
 
@@ -127,8 +104,6 @@ Places mesh instances along a golden-angle (≈137.5°) distribution — the mat
 
 A Bézier curve drawn in 3D space is given volume via bevel depth and transformed through a Trim Curve Geometry Nodes modifier that animates the progressive unfolding of the line — as if traced by Picasso's hand in a darkened room. The curve emits light (Emission shader) against a dark world background.
 
-> The companion `.blend` (`Picasso.blend`) includes the Starlight Atmosphere add-on for a full night-sky environment. This script provides a self-contained version using standard Cycles nodes.
-
 | Parameter | Default | Description |
 |-----------|---------|-------------|
 | `BEVEL_DEPTH` | `0.04` | Thickness of the volumetric line |
@@ -138,38 +113,3 @@ A Bézier curve drawn in 3D space is given volume via bevel depth and transforme
 | `CURVE_POINTS` | `12` | Control points of the gesture path |
 
 > **Press Space** to watch the 80-frame light-drawing animation.
-
----
-
-## `cragg_stack.py` — Tony Cragg: Stratified Torsional Surfaces
-
-**§3.6.3.1 · Figure 20**
-
-Generates layered, twisted volumes inspired by Tony Cragg's *Stack* (2011). A bmesh torsion twists the base cube, then a Subdivision Surface + Musgrave Displace modifier adds stratified geological layering. An optional animation shows the displacement strength growing from 0 to maximum over 60 frames — a "frozen moment of movement" made editable.
-
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `STRENGTH` | `0.40` | Displacement amplitude (layering depth) |
-| `NOISE_SCALE` | `0.8` | Texture spatial frequency |
-| `SUB_LEVELS` | `3` | Subdivision levels |
-| `TORSION` | `35.0` | Twist angle top-to-bottom (degrees) |
-| `ANIMATE` | `True` | Keyframe animation of displacement growth |
-
----
-
-## `kapoor_tall_tree.py` — Anish Kapoor: Tall Tree & The Eye
-
-**§3.6.3.2 · Figure 22**
-
-Procedurally recreates Kapoor's vertical column of mirrored spheres using two complementary approaches. The Geometry Nodes method distributes spheres inside a cylindrical volume with density and scale variation; the Python loop method builds the column element by element with explicit random offsets.
-
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `MODE` | `"geonodes"` | `"geonodes"` · `"python"` · `"both"` |
-| `N_SPHERES` | `60` | Number of spheres |
-| `COLUMN_HEIGHT` | `5.0` | Total height in scene units |
-| `RADIUS_BASE` | `0.30` | Base sphere radius |
-| `RADIUS_VAR` | `0.10` | Random radius variation |
-| `MIRROR_FINISH` | `True` | Near-mirror metallic material |
-
-> Use `MODE = "both"` for a side-by-side comparison of the two approaches. Set `MIRROR_FINISH = False` for a matte study version.
