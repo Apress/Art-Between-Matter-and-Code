@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1200"
+   height="380"
+   viewBox="0 0 1200 380"
+   version="1.1"
+   id="svg34"
+   sodipodi:docname="015_Identity.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   inkscape:export-filename="015_Identity.png"
+   inkscape:export-xdpi="213.71327"
+   inkscape:export-ydpi="213.71327"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview34"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.60416667"
+     inkscape:cx="636.41379"
+     inkscape:cy="124.96552"
+     inkscape:window-width="1600"
+     inkscape:window-height="829"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg34" />
+  <defs
+     id="defs8">
+    <linearGradient
+       id="g1"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#F2F0FF"
+         id="stop1" />
+      <stop
+         offset="100%"
+         stop-color="#FFFFFF"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="g2"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#E8F7FF"
+         id="stop3" />
+      <stop
+         offset="100%"
+         stop-color="#FFFFFF"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       id="g3"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#EAFBEA"
+         id="stop5" />
+      <stop
+         offset="100%"
+         stop-color="#FFFFFF"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       id="g4"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#FFF2E2"
+         id="stop7" />
+      <stop
+         offset="100%"
+         stop-color="#FFFFFF"
+         id="stop8" />
+    </linearGradient>
+    <marker
+       id="arrow"
+       markerWidth="10"
+       markerHeight="10"
+       refX="9"
+       refY="5"
+       orient="auto">
+      <path
+         d="M0,0 L10,5 L0,10 Z"
+         fill="#444"
+         id="path8" />
+    </marker>
+    <style
+       id="style8">
+      .ttl{font:700 22px Georgia,serif; text-anchor:middle}
+      .ct{font:700 16px Georgia,serif; text-anchor:middle}
+      .tx{font:13.5px Georgia,serif; fill:#222}
+      .ft{font:13px Georgia,serif; fill:#666; text-anchor:middle}
+    </style>
+  </defs>
+  <text
+     x="600"
+     y="34"
+     class="ttl"
+     id="text8"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:22px;line-height:normal;font-family:Georgia, serif;display:none">Identity, Authorship, and Post‑Authorship — Visual Map</text>
+  <!-- layout constants -->
+  <!-- centers: 170, 460, 750, 1040; card size 250x240 -->
+  <!-- CARD 1 -->
+  <rect
+     x="45"
+     y="70"
+     width="250"
+     height="240"
+     rx="22"
+     ry="22"
+     fill="url(#g1)"
+     stroke="#333333"
+     stroke-width="1.5"
+     id="rect8"
+     style="display:inline;stroke:#000000;stroke-opacity:1;stroke-width:3;stroke-dasharray:none;fill:#f2f2f2" />
+  <circle
+     cx="170"
+     cy="120"
+     r="14"
+     fill="#333333"
+     id="circle8"
+     style="display:none" />
+  <rect
+     x="160"
+     y="132"
+     width="20"
+     height="18"
+     fill="#333333"
+     id="rect9"
+     style="display:none" />
+  <text
+     x="170"
+     y="168"
+     class="ct"
+     id="text9">Single Author</text>
+  <text
+     x="60"
+     y="196"
+     class="tx"
+     id="text10">• Artwork as singular</text>
+  <text
+     x="60"
+     y="218"
+     class="tx"
+     id="text11">• Signature &amp; provenance</text>
+  <text
+     x="60"
+     y="240"
+     class="tx"
+     id="text12">• Studio model</text>
+  <!-- ARROW 1 -->
+  <line
+     x1="295"
+     y1="190"
+     x2="385"
+     y2="190"
+     stroke="#444444"
+     stroke-width="2"
+     marker-end="url(#arrow)"
+     id="line12"
+     style="display:none" />
+  <!-- CARD 2 -->
+  <rect
+     x="335"
+     y="70"
+     width="250"
+     height="240"
+     rx="22"
+     ry="22"
+     fill="url(#g2)"
+     stroke="#333"
+     stroke-width="1.5"
+     id="rect12"
+     style="stroke:#000000;stroke-opacity:1;stroke-width:3;stroke-dasharray:none;fill:#ececec" />
+  <circle
+     cx="460"
+     cy="112"
+     r="6"
+     fill="#333333"
+     id="circle12"
+     style="display:none" />
+  <circle
+     cx="436"
+     cy="112"
+     r="6"
+     fill="#333333"
+     id="circle13"
+     style="display:none" />
+  <circle
+     cx="448"
+     cy="134"
+     r="6"
+     fill="#333333"
+     id="circle14"
+     style="display:none" />
+  <line
+     x1="436"
+     y1="112"
+     x2="460"
+     y2="112"
+     stroke="#333333"
+     stroke-width="2"
+     id="line14"
+     style="display:none" />
+  <line
+     x1="436"
+     y1="112"
+     x2="448"
+     y2="134"
+     stroke="#333333"
+     stroke-width="2"
+     id="line15"
+     style="display:none" />
+  <line
+     x1="460"
+     y1="112"
+     x2="448"
+     y2="134"
+     stroke="#333333"
+     stroke-width="2"
+     id="line16"
+     style="display:none" />
+  <text
+     x="460"
+     y="168"
+     class="ct"
+     id="text16"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:16px;line-height:normal;font-family:Georgia, serif;display:inline">Distributed Authorship</text>
+  <text
+     x="352"
+     y="196"
+     class="tx"
+     id="text17">• Networks &amp; co‑creation</text>
+  <text
+     x="352"
+     y="218"
+     class="tx"
+     id="text18">• Open‑source workflows</text>
+  <text
+     x="352"
+     y="240"
+     class="tx"
+     id="text19">• Logged contributions</text>
+  <!-- ARROW 2 -->
+  <line
+     x1="585"
+     y1="190"
+     x2="675"
+     y2="190"
+     stroke="#444444"
+     stroke-width="2"
+     marker-end="url(#arrow)"
+     id="line19"
+     style="display:none" />
+  <!-- CARD 3 -->
+  <rect
+     x="625"
+     y="70"
+     width="250"
+     height="240"
+     rx="22"
+     ry="22"
+     fill="url(#g3)"
+     stroke="#333"
+     stroke-width="1.5"
+     id="rect19"
+     style="stroke:#000000;stroke-opacity:1;stroke-width:3;stroke-dasharray:none;fill:#e6e6e6" />
+  <rect
+     x="738"
+     y="100"
+     width="36"
+     height="40"
+     fill="none"
+     stroke="#333333"
+     stroke-width="2"
+     id="rect20"
+     style="display:none" />
+  <circle
+     cx="724"
+     cy="132"
+     r="6"
+     fill="none"
+     stroke="#333333"
+     stroke-width="2"
+     id="circle20"
+     style="display:none" />
+  <circle
+     cx="740"
+     cy="132"
+     r="6"
+     fill="none"
+     stroke="#333333"
+     stroke-width="2"
+     id="circle21"
+     style="display:none" />
+  <line
+     x1="730"
+     y1="132"
+     x2="734"
+     y2="132"
+     stroke="#333333"
+     stroke-width="2"
+     id="line21"
+     style="display:none" />
+  <text
+     x="750"
+     y="168"
+     class="ct"
+     id="text21">Hybrid Licenses</text>
+  <text
+     x="642"
+     y="196"
+     class="tx"
+     id="text22">• CC + smart contracts</text>
+  <text
+     x="642"
+     y="218"
+     class="tx"
+     id="text23">• Attribution &amp; royalties</text>
+  <text
+     x="642"
+     y="240"
+     class="tx"
+     id="text24">• Programmable rights</text>
+  <!-- ARROW 3 -->
+  <line
+     x1="875"
+     y1="190"
+     x2="965"
+     y2="190"
+     stroke="#444444"
+     stroke-width="2"
+     marker-end="url(#arrow)"
+     id="line24"
+     style="display:none" />
+  <!-- CARD 4 -->
+  <rect
+     x="915"
+     y="70"
+     width="250"
+     height="240"
+     rx="22"
+     ry="22"
+     fill="url(#g4)"
+     stroke="#333"
+     stroke-width="1.5"
+     id="rect24"
+     style="stroke:#000000;stroke-opacity:1;stroke-width:3;stroke-dasharray:none;fill:#cccccc" />
+  <circle
+     cx="1040"
+     cy="120"
+     r="12"
+     fill="none"
+     stroke="#333333"
+     stroke-width="2"
+     id="circle24"
+     style="display:none" />
+  <line
+     x1="1040"
+     y1="120"
+     x2="1052"
+     y2="120"
+     stroke="#333333"
+     stroke-width="2"
+     id="line25"
+     style="display:none" />
+  <line
+     x1="1040"
+     y1="120"
+     x2="1052"
+     y2="120"
+     stroke="#333333"
+     stroke-width="2"
+     transform="rotate(60,1040,120)"
+     id="line26"
+     style="display:none" />
+  <line
+     x1="1040"
+     y1="120"
+     x2="1052"
+     y2="120"
+     stroke="#333333"
+     stroke-width="2"
+     transform="rotate(120,1040,120)"
+     id="line27"
+     style="display:none" />
+  <line
+     x1="1040"
+     y1="120"
+     x2="1052"
+     y2="120"
+     stroke="#333333"
+     stroke-width="2"
+     transform="rotate(180,1040,120)"
+     id="line28"
+     style="display:none" />
+  <line
+     x1="1040"
+     y1="120"
+     x2="1052"
+     y2="120"
+     stroke="#333333"
+     stroke-width="2"
+     transform="rotate(-120,1040,120)"
+     id="line29"
+     style="display:none" />
+  <line
+     x1="1040"
+     y1="120"
+     x2="1052"
+     y2="120"
+     stroke="#333333"
+     stroke-width="2"
+     transform="rotate(-60,1040,120)"
+     id="line30"
+     style="display:none" />
+  <path
+     d="m 1054,114 q 10,6 0,12 -10,6 0,12"
+     fill="none"
+     stroke="#333333"
+     stroke-width="2"
+     id="path30"
+     style="display:none" />
+  <text
+     x="1040"
+     y="168"
+     class="ct"
+     id="text30">Post‑Authorship</text>
+  <text
+     x="932"
+     y="196"
+     class="tx"
+     id="text31">• Generative &amp; AI systems</text>
+  <text
+     x="932"
+     y="218"
+     class="tx"
+     id="text32">• Artist as orchestrator</text>
+  <text
+     x="932"
+     y="240"
+     class="tx"
+     id="text33">• Process &gt; object</text>
+  <text
+     x="600"
+     y="342"
+     class="ft"
+     id="text34"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:normal;font-family:Georgia, serif">From singular authorship to networked, programmable authorship</text>
+</svg>

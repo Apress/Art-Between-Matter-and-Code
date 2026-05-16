@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1400"
+   height="420"
+   viewBox="0 0 1400 420"
+   role="img"
+   aria-label="Open-Source → Generative Systems → Post-Authorship"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="010_post_authorship_flow.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   inkscape:export-filename="010_post_authorship_flow.png"
+   inkscape:export-xdpi="197.46835"
+   inkscape:export-ydpi="197.46835"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.74025241"
+     inkscape:cx="736.23536"
+     inkscape:cy="116.85203"
+     inkscape:window-width="1600"
+     inkscape:window-height="829"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <defs
+     id="defs1">
+    <style
+       id="style1">
+      .title { font: 700 26px 'Inter', Arial, sans-serif; fill:#111; }
+      .head { font: 700 22px 'Inter', Arial, sans-serif; fill:#1a1a1a; }
+      .sub { font: 400 18px 'Inter', Arial, sans-serif; fill:#333; }
+    </style>
+    <marker
+       id="arrow"
+       viewBox="0 0 10 10"
+       refX="9"
+       refY="5"
+       markerWidth="9"
+       markerHeight="9"
+       orient="auto">
+      <path
+         d="M0,0 L10,5 L0,10 Z"
+         fill="#666"
+         id="path1" />
+    </marker>
+  </defs>
+  <text
+     x="700"
+     y="48"
+     text-anchor="middle"
+     class="title"
+     id="text1"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:26px;line-height:normal;font-family:Inter, Arial, sans-serif;display:none">From Open‑Source to Post‑Authorship</text>
+  <rect
+     x="70"
+     y="110"
+     width="380"
+     height="220"
+     rx="26"
+     ry="26"
+     style="fill:#cccccc;stroke:#000000;stroke-width:3;stroke-dasharray:none;stroke-opacity:1"
+     id="rect1" />
+  <text
+     x="260.0"
+     y="215"
+     text-anchor="middle"
+     class="head"
+     id="text2">Open-Source</text>
+  <text
+     x="260.0"
+     y="245"
+     text-anchor="middle"
+     class="sub"
+     id="text3">(community authorship)</text>
+  <rect
+     x="510"
+     y="110"
+     width="380"
+     height="220"
+     rx="26"
+     ry="26"
+     style="fill:#e6e6e6;stroke:#000000;stroke-width:3;stroke-dasharray:none;stroke-opacity:1"
+     id="rect3" />
+  <text
+     x="700.0"
+     y="215"
+     text-anchor="middle"
+     class="head"
+     id="text4">Generative Systems</text>
+  <text
+     x="700.0"
+     y="245"
+     text-anchor="middle"
+     class="sub"
+     id="text5">(process authorship)</text>
+  <rect
+     x="950"
+     y="110"
+     width="380"
+     height="220"
+     rx="26"
+     ry="26"
+     style="fill:#ececec;stroke:#000000;stroke-width:3;stroke-dasharray:none;stroke-opacity:1"
+     id="rect5" />
+  <text
+     x="1140.0"
+     y="215"
+     text-anchor="middle"
+     class="head"
+     id="text6">Post-Authorship</text>
+  <text
+     x="1140.0"
+     y="245"
+     text-anchor="middle"
+     class="sub"
+     id="text7">(distributed authorship)</text>
+  <g
+     transform="matrix(0.5,0,0,0.5,463.70026,204.35013)"
+     id="g10-8-2"
+     style="fill:#000000">
+    <polygon
+       points="50,40 0,40 0,20 50,20 50,10 70,30 50,50 "
+       fill="#483d8b"
+       id="polygon10-2-4"
+       style="fill:#000000" />
+  </g>
+  <g
+     transform="matrix(0.5,0,0,0.5,902,204)"
+     id="g10-8-2-8"
+     style="fill:#000000">
+    <polygon
+       points="0,40 0,20 50,20 50,10 70,30 50,50 50,40 "
+       fill="#483d8b"
+       id="polygon10-2-4-2"
+       style="fill:#000000" />
+  </g>
+</svg>
