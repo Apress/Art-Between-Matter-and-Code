@@ -28,25 +28,25 @@
 <line x1="262.5" y1="138.0" x2="262.5" y2="95.0" stroke="#BBBBBB" stroke-width="0.8"/>
 <text x="262.5" y="93.0" text-anchor="middle" font-size="8" fill="#555" font-weight="normal" font-style="normal"><tspan x="262.5" dy="0.0">Limited series;</tspan><tspan x="262.5" dy="10.4">aura partially</tspan><tspan x="262.5" dy="10.4">preserved</tspan></text>
 <text x="262.5" y="388.0" text-anchor="middle" font-size="9.5" fill="#A07850" font-weight="bold" font-style="normal"><tspan x="262.5" dy="0.0">Cast /</tspan><tspan x="262.5" dy="12.3">Mould</tspan></text>
-<text x="262.5" y="414.0" text-anchor="middle" font-size="8" fill="#777" font-weight="normal" font-style="italic">1800–1880</text>
+<text x="262.5" y="414.0" text-anchor="middle" font-size="8" fill="#777" font-weight="normal" font-style="italic">1800-1880</text>
 <circle cx="465.0" cy="280.0" r="6" fill="#4A6FA5" stroke="white" stroke-width="1.5"/>
 <rect x="460.0" y="155.0" width="10" height="10" fill="#4A6FA5" stroke="white" stroke-width="1.5"/>
 <line x1="465.0" y1="273.0" x2="465.0" y2="310.0" stroke="#BBBBBB" stroke-width="0.8"/>
 <text x="465.0" y="308.0" text-anchor="middle" font-size="8" fill="#555" font-weight="normal" font-style="normal"><tspan x="465.0" dy="0.0">Benjamin's</tspan><tspan x="465.0" dy="10.4">watershed:</tspan><tspan x="465.0" dy="10.4">photo, print, film</tspan></text>
 <text x="465.0" y="388.0" text-anchor="middle" font-size="9.5" fill="#4A6FA5" font-weight="bold" font-style="normal"><tspan x="465.0" dy="0.0">Mechanical</tspan><tspan x="465.0" dy="12.3">Reproduction</tspan></text>
-<text x="465.0" y="414.0" text-anchor="middle" font-size="8" fill="#777" font-weight="normal" font-style="italic">1880–1960</text>
+<text x="465.0" y="414.0" text-anchor="middle" font-size="8" fill="#777" font-weight="normal" font-style="italic">1880-1960</text>
 <circle cx="667.5" cy="310.0" r="6" fill="#2E8B57" stroke="white" stroke-width="1.5"/>
 <rect x="662.5" y="80.0" width="10" height="10" fill="#2E8B57" stroke="white" stroke-width="1.5"/>
 <line x1="667.5" y1="303.0" x2="667.5" y2="260.0" stroke="#BBBBBB" stroke-width="0.8"/>
 <text x="667.5" y="258.0" text-anchor="middle" font-size="8" fill="#555" font-weight="normal" font-style="normal"><tspan x="667.5" dy="0.0">Infinite copies;</tspan><tspan x="667.5" dy="10.4">NFT / blockchain</tspan><tspan x="667.5" dy="10.4">re-aura</tspan></text>
 <text x="667.5" y="388.0" text-anchor="middle" font-size="9.5" fill="#2E8B57" font-weight="bold" font-style="normal"><tspan x="667.5" dy="0.0">Digital /</tspan><tspan x="667.5" dy="12.3">Parametric</tspan></text>
-<text x="667.5" y="414.0" text-anchor="middle" font-size="8" fill="#777" font-weight="normal" font-style="italic">1960–2020</text>
+<text x="667.5" y="414.0" text-anchor="middle" font-size="8" fill="#777" font-weight="normal" font-style="italic">1960-2020</text>
 <circle cx="870.0" cy="205.0" r="6" fill="#8B2E8B" stroke="white" stroke-width="1.5"/>
 <rect x="865.0" y="65.0" width="10" height="10" fill="#8B2E8B" stroke="white" stroke-width="1.5"/>
 <line x1="870.0" y1="198.0" x2="870.0" y2="235.0" stroke="#BBBBBB" stroke-width="0.8"/>
 <text x="870.0" y="233.0" text-anchor="middle" font-size="8" fill="#555" font-weight="normal" font-style="normal"><tspan x="870.0" dy="0.0">Generative aura:</tspan><tspan x="870.0" dy="10.4">unique process,</tspan><tspan x="870.0" dy="10.4">infinite output</tspan></text>
 <text x="870.0" y="388.0" text-anchor="middle" font-size="9.5" fill="#8B2E8B" font-weight="bold" font-style="normal">AI-Generated</text>
-<text x="870.0" y="414.0" text-anchor="middle" font-size="8" fill="#777" font-weight="normal" font-style="italic">2020 →</text>
+<text x="870.0" y="414.0" text-anchor="middle" font-size="8" fill="#777" font-weight="normal" font-style="italic">2020 onwards</text>
 <rect x="642" y="72" width="220" height="52" rx="4" fill="white" stroke="#DDDDDD" stroke-width="1" opacity="0.85"/>
 <line x1="650" y1="88" x2="680" y2="88" stroke="#7B5C3A" stroke-width="2.5"/>
 <circle cx="665" cy="88" r="5" fill="#7B5C3A" stroke="white" stroke-width="1.5"/>
@@ -54,7 +54,7 @@
 <line x1="650" y1="108" x2="680" y2="108" stroke="#2E5D8B" stroke-width="2" stroke-dasharray="6 3"/>
 <rect x="661" y="104" width="8" height="8" fill="#2E5D8B" stroke="white" stroke-width="1.5"/>
 <text x="686.0" y="112.0" text-anchor="start" font-size="9" fill="#333" font-weight="normal" font-style="normal">Reproducibility / circulation</text>
-<text x="450.0" y="22.0" text-anchor="middle" font-size="14" fill="#2A2A2A" font-weight="bold" font-style="normal">Aura &amp; Reproducibility — from Handmade Object to AI-Generated Work</text>
-<text x="450.0" y="42.0" text-anchor="middle" font-size="9" fill="#666" font-weight="normal" font-style="italic">after Walter Benjamin, «Das Kunstwerk im Zeitalter seiner technischen Reproduzierbarkeit» (1935)</text>
-<text x="60.0" y="472.0" text-anchor="start" font-size="7" fill="#AAAAAA" font-weight="normal" font-style="normal">© 2025 Gianpiero Moioli · CC BY-NC 4.0 · Art Between Matter and Code, Apress / Springer</text>
+<text x="450.0" y="22.0" text-anchor="middle" font-size="14" fill="#2A2A2A" font-weight="bold" font-style="normal">Aura and Reproducibility - from Handmade Object to AI-Generated Work</text>
+<text x="450.0" y="42.0" text-anchor="middle" font-size="9" fill="#666" font-weight="normal" font-style="italic">after Walter Benjamin, Das Kunstwerk im Zeitalter seiner technischen Reproduzierbarkeit (1935)</text>
+<text x="60.0" y="472.0" text-anchor="start" font-size="7" fill="#AAAAAA" font-weight="normal" font-style="normal">2025 Gianpiero Moioli - CC BY-NC 4.0 - Art Between Matter and Code, Apress / Springer</text>
 </svg>

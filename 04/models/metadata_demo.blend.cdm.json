@@ -1,0 +1,10 @@
+{
+  "id_version": "CDM-1.0",
+  "file_name": "metadata_demo.blend",
+  "sha256_hash": "c0f3b85d82602e0a8bd8fd47c4941b909b2363cf3db8a9e6abf0df64c3de2c72",
+  "timestamp_utc": "2026-05-16T16:46:07Z",
+  "author": "Gianpiero Moioli",
+  "tool": "Blender 5.1 + certify_asset.py",
+  "previous_hash": null,
+  "notes": "Demonstration file for §4.2.2 — internal metadata (Custom Properties) + external certification (SHA-256/CDM). Art Between Matter and Code, Chapter 4."
+}
