@@ -5,9 +5,11 @@
 
 ## Quick start
 
-| Script | Launcher (Windows) | Section | Description |
-|--------|--------------------|---------|-------------|
-| `hybrid_workflow_diagram.py` | `run_hybrid_workflow_diagram.bat` | §5.1 | Hybrid Workflow diagram → SVG |
+| Script | Launcher (Windows) | Blender? | Section | Description |
+|--------|--------------------|----------|---------|-------------|
+| `hybrid_workflow_diagram.py` | `run_hybrid_workflow_diagram.bat` | No | §5.1 | Hybrid Workflow diagram → SVG |
+| `geometry_nodes_growth.py` | `run_geometry_nodes_growth.bat` | Yes | §5.4.3 | Creates `procedural_sculpture_demo.blend` in models/ |
+| `blender_vse_setup.py` | `run_blender_vse_setup.bat` | Yes | §5.3.1.4.1 | Configures VSE for AI video workflow |
 
 ---
 
