@@ -21,13 +21,17 @@ if not defined BLENDER (
 )
 
 echo [geometry_nodes_growth] Creating procedural_sculpture_demo.blend ...
-"%BLENDER%" --background --python geometry_nodes_growth.py
+echo.
 
+"%BLENDER%" --background --python geometry_nodes_growth.py 2>&1 | findstr /i "geometry_nodes_growth Saved Error saved"
+
+echo.
 if exist "..\models\procedural_sculpture_demo.blend" (
-    echo.
-    echo [OK] procedural_sculpture_demo.blend created in models/
+    echo [OK] procedural_sculpture_demo.blend created successfully in models/
     echo      Open it in Blender to explore the Geometry Nodes setup.
+    echo      In the modifier panel you will find: NoiseDisplacement (adjust Displacement parameter)
 ) else (
-    echo [ERROR] .blend file was not created. Check Blender output above.
+    echo [ERROR] .blend file was not created. Check the output above.
 )
+echo.
 pause

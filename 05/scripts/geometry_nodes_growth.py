@@ -175,62 +175,63 @@ def create_base_sculpture():
 
 
 # ─────────────────────────────────────────────
-# Second layer — scatter spikes (growth)
+# Second layer — scatter instances (growth)
+# Note: kept as a separate function so it can be
+# called interactively (Alt+P) but skipped in
+# background mode to avoid Blender 5.x exit crash.
 # ─────────────────────────────────────────────
 
-def build_spike_nodes(ng):
+def add_instance_layer(base_obj):
+    """
+    Adds a second Geometry Nodes modifier that scatters small icosphere
+    instances across the surface, simulating organic growth.
+    Call this interactively (Alt+P) — not used in background/batch mode.
+    """
+    mod = base_obj.modifiers.new("InstanceGrowth", 'NODES')
+    ng  = bpy.data.node_groups.new("InstanceGrowth", 'GeometryNodeTree')
+    mod.node_group = ng
+
+    ng.interface.new_socket("Geometry", in_out='INPUT',  socket_type='NodeSocketGeometry')
+    ng.interface.new_socket("Geometry", in_out='OUTPUT', socket_type='NodeSocketGeometry')
+    ng.interface.new_socket("Density",  in_out='INPUT',  socket_type='NodeSocketFloat')
+
     nodes = ng.nodes
     links = ng.links
 
-    n_in  = nodes.new('NodeGroupInput');  n_in.location  = (-800, 0)
-    n_out = nodes.new('NodeGroupOutput'); n_out.location = ( 800, 0)
+    n_in   = nodes.new('NodeGroupInput');  n_in.location  = (-800, 0)
+    n_out  = nodes.new('NodeGroupOutput'); n_out.location = ( 700, 0)
 
-    # Distribute points on faces
     n_dist = nodes.new('GeometryNodeDistributePointsOnFaces')
     n_dist.location = (-500, 0)
     n_dist.distribute_method = 'RANDOM'
     n_dist.inputs['Density'].default_value = SPIKE_DENSITY
 
-    # Cone as spike instance
-    n_cone = nodes.new('GeometryNodeMeshCone')
-    n_cone.location = (-500, -280)
-    n_cone.inputs['Vertices'].default_value      = 6
-    n_cone.inputs['Depth'].default_value         = SPIKE_HEIGHT
-    n_cone.inputs['Radius Bottom'].default_value = SPIKE_RADIUS
-    n_cone.inputs['Radius Top'].default_value    = 0.002
+    n_ball = nodes.new('GeometryNodeMeshUVSphere')
+    n_ball.location = (-500, -280)
+    n_ball.inputs['Radius'].default_value = SPIKE_RADIUS
 
-    # Instance on points (normal used directly as rotation)
     n_inst = nodes.new('GeometryNodeInstanceOnPoints')
-    n_inst.location = (-100, 0)
+    n_inst.location = (-150, 0)
 
-    # Realize instances
     n_real = nodes.new('GeometryNodeRealizeInstances')
-    n_real.location = (150, 0)
+    n_real.location = (100, 0)
 
-    # Join base + spikes
     n_join = nodes.new('GeometryNodeJoinGeometry')
-    n_join.location = (450, 0)
+    n_join.location = (400, 0)
 
-    # Wiring
-    links.new(n_in.outputs['Geometry'],     n_dist.inputs['Mesh'])
-    links.new(n_in.outputs['Geometry'],     n_join.inputs['Geometry'])
-    links.new(n_dist.outputs['Points'],     n_inst.inputs['Points'])
-    links.new(n_dist.outputs['Rotation'],   n_inst.inputs['Rotation'])
-    links.new(n_cone.outputs['Mesh'],       n_inst.inputs['Instance'])
-    links.new(n_inst.outputs['Instances'],  n_real.inputs['Geometry'])
-    links.new(n_real.outputs['Geometry'],   n_join.inputs['Geometry'])
-    links.new(n_join.outputs['Geometry'],   n_out.inputs['Geometry'])
+    links.new(n_in.outputs['Geometry'],    n_dist.inputs['Mesh'])
+    links.new(n_in.outputs['Density'],     n_dist.inputs['Density'])
+    links.new(n_in.outputs['Geometry'],    n_join.inputs['Geometry'])
+    links.new(n_dist.outputs['Points'],    n_inst.inputs['Points'])
+    links.new(n_ball.outputs['Mesh'],      n_inst.inputs['Instance'])
+    links.new(n_inst.outputs['Instances'], n_real.inputs['Geometry'])
+    links.new(n_real.outputs['Geometry'],  n_join.inputs['Geometry'])
+    links.new(n_join.outputs['Geometry'],  n_out.inputs['Geometry'])
 
-
-def add_spike_layer(base_obj):
-    mod = base_obj.modifiers.new("SpikeGrowth", 'NODES')
-    ng  = bpy.data.node_groups.new("SpikeGrowth", 'GeometryNodeTree')
-    mod.node_group = ng
-
-    ng.interface.new_socket("Geometry", in_out='INPUT',  socket_type='NodeSocketGeometry')
-    ng.interface.new_socket("Geometry", in_out='OUTPUT', socket_type='NodeSocketGeometry')
-
-    build_spike_nodes(ng)
+    for item in ng.interface.items_tree:
+        if item.name == "Density":
+            mod[item.identifier] = SPIKE_DENSITY
+            break
 
 
 # ─────────────────────────────────────────────
@@ -263,7 +264,9 @@ print("\n[geometry_nodes_growth] Building procedural sculpture…")
 
 setup_scene()
 base = create_base_sculpture()
-add_spike_layer(base)
+if not SAVE_BLEND:
+    # Interactive mode: add the instance growth layer too
+    add_instance_layer(base)
 add_material(base)
 
 # Deselect all, select sculpture
