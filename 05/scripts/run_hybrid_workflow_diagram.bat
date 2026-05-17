@@ -1,5 +1,5 @@
 @echo off
-:: hybrid_workflow_diagram.py — launcher for Windows
+:: hybrid_workflow_diagram.py ??? launcher for Windows
 :: Generates the Hybrid Workflow diagram (Chapter 5) as a standalone SVG.
 :: The SVG is saved in the current folder and opens automatically in your browser.
 

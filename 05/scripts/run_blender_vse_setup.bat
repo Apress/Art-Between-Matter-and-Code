@@ -1,5 +1,5 @@
 @echo off
-:: blender_vse_setup.py — launcher for Windows
+:: blender_vse_setup.py ??? launcher for Windows
 :: Opens Blender with the VSE setup script loaded in the Scripting workspace.
 :: Press Alt+P to configure render settings and switch to the Video Editing workspace.
 
