@@ -36,7 +36,7 @@ from pathlib import Path
 OUTPUT_FILENAME = "ref_hybrid_workflow_diagram.svg"
 
 # Canvas
-W, H = 960, 600
+W, H = 960, 680
 PAD = 40            # outer margin
 
 # Colours  (dark-mode-friendly on white)
@@ -60,51 +60,60 @@ FONT = "Arial, Helvetica, sans-serif"
 
 NODES = [
     # ── LEFT: Physical inputs ──────────────────────────────
-    (110, 180, 160, 54, "Manual Painting",   "acrylic · ink · pen",      COL_MANUAL),
-    (110, 300, 160, 54, "Manual Sculpture",  "clay · plaster · metal",   COL_MANUAL),
-    (110, 420, 160, 54, "Physical Object",   "scan target · heritage",   COL_MANUAL),
+    (110, 160, 160, 54, "Manual Painting",   "acrylic · ink · pen",      COL_MANUAL),   # 0
+    (110, 300, 160, 54, "Manual Sculpture",  "clay · plaster · metal",   COL_MANUAL),   # 1
+    (110, 450, 160, 54, "Physical Object",   "scan target · heritage",   COL_MANUAL),   # 2
 
     # ── CENTER-LEFT: Scanning / acquisition ────────────────
-    (340, 300, 160, 54, "2D / 3D Scanning",  "photogrammetry · LiDAR",   COL_DIGITAL),
+    (340, 300, 160, 54, "2D / 3D Scanning",  "photogrammetry · LiDAR",   COL_DIGITAL),  # 3
 
     # ── CENTER: Digital processing ─────────────────────────
-    (530, 160, 150, 50, "Digital Painting",  "GIMP · Procreate · Krita", COL_DIGITAL),
-    (530, 300, 150, 50, "AI Generation",     "SD 1.5 · MidJourney V7",   COL_AI),
-    (530, 440, 150, 50, "3D Modeling",       "Blender · ZBrush",         COL_DIGITAL),
+    (530, 155, 150, 50, "Digital Painting",  "GIMP · Procreate · Krita", COL_DIGITAL),  # 4
+    (530, 290, 150, 50, "AI Generation",     "SD 1.5 · MidJourney V7",   COL_AI),       # 5
+    (530, 420, 150, 50, "3D Modeling",       "Blender · Geo Nodes",      COL_DIGITAL),  # 6
+    (530, 560, 150, 50, "Digital Sculpture", "ZBrush · Gravity Sketch",  COL_DIGITAL),  # 7 NEW
 
     # ── CENTER-RIGHT: Prototyping / certification ───────────
-    (730, 300, 160, 54, "Prototyping",       "FDM · SLA · CNC",          COL_DIGITAL),
-    (730, 440, 160, 54, "Certification",     "SHA-256 · CDM · OTS",      COL_CERT),
+    (730, 290, 160, 54, "Prototyping",       "FDM · SLA · CNC",          COL_DIGITAL),  # 8
+    (730, 490, 160, 54, "Certification",     "SHA-256 · CDM · OTS",      COL_CERT),     # 9
 
     # ── RIGHT: Exhibition / output ─────────────────────────
-    (900, 160, 130, 46, "Physical\nExhibition",  "", COL_OUTPUT),
-    (900, 280, 130, 46, "XR\nExhibition",        "", COL_OUTPUT),
-    (900, 390, 130, 46, "Installation",           "", COL_OUTPUT),
-    (900, 490, 130, 46, "Digital /\nNFT / CDM",  "", COL_OUTPUT),
+    (900, 155, 130, 46, "Physical\nExhibition",  "", COL_OUTPUT),   # 10
+    (900, 270, 130, 46, "XR / VR\nExhibition",   "", COL_OUTPUT),   # 11
+    (900, 380, 130, 46, "Installation",           "", COL_OUTPUT),   # 12
+    (900, 490, 130, 46, "Digital /\nNFT / CDM",  "", COL_OUTPUT),   # 13
 ]
 
 # Arrows: (from_index, to_index, label)
+# Node indices: 0=ManualPainting 1=ManualSculpture 2=PhysicalObject
+#   3=Scanning 4=DigitalPainting 5=AIGeneration 6=3DModeling 7=DigitalSculpture
+#   8=Prototyping 9=Certification 10=PhysicalExh 11=XRExh 12=Installation 13=DigitalNFT
 ARROWS = [
-    (0, 3, "scan"),          # Manual Painting → Scanning
-    (0, 4, "digitize"),      # Manual Painting → Digital Painting
-    (0, 5, "AI expand"),     # Manual Painting → AI Generation
-    (1, 3, "scan"),          # Manual Sculpture → Scanning
-    (1, 6, "import"),        # Manual Sculpture → 3D Modeling
-    (2, 3, "scan"),          # Physical Object → Scanning
-    (3, 5, "img2img"),       # Scanning → AI Generation
-    (3, 6, "mesh"),          # Scanning → 3D Modeling
-    (4, 5, "hybrid"),        # Digital Painting → AI Generation
-    (4, 9, ""),              # Digital Painting → Physical Exhibition
-    (4, 10, ""),             # Digital Painting → XR Exhibition
-    (5, 4, "inpaint/\noutpaint"),  # AI → Digital Painting (feedback)
-    (5, 7, "print"),         # AI → Prototyping
-    (5, 12, ""),             # AI → Digital / NFT
-    (6, 7, "export STL"),    # 3D Modeling → Prototyping
-    (6, 8, "certify"),       # 3D Modeling → Certification
-    (7, 9, ""),              # Prototyping → Physical Exhibition
-    (7, 11, "install"),      # Prototyping → Installation
-    (8, 12, ""),             # Certification → Digital / NFT
-    (5, 8, "certify"),       # AI → Certification
+    (0, 3, "scan"),           # Manual Painting → Scanning
+    (0, 4, "digitize"),       # Manual Painting → Digital Painting
+    (0, 5, "AI expand"),      # Manual Painting → AI Generation
+    (1, 3, "scan"),           # Manual Sculpture → Scanning
+    (1, 6, "import"),         # Manual Sculpture → 3D Modeling
+    (1, 7, "sculpt"),         # Manual Sculpture → Digital Sculpture
+    (2, 3, "scan"),           # Physical Object → Scanning
+    (3, 5, "img2img"),        # Scanning → AI Generation
+    (3, 6, "mesh"),           # Scanning → 3D Modeling
+    (3, 7, "retopo"),         # Scanning → Digital Sculpture
+    (4, 5, "hybrid"),         # Digital Painting → AI Generation
+    (4, 10, ""),              # Digital Painting → Physical Exhibition
+    (4, 11, ""),              # Digital Painting → XR Exhibition
+    (5, 4, "inpaint/\noutpaint"),  # AI → Digital Painting (feedback, dashed)
+    (5, 8, "print"),          # AI → Prototyping
+    (5, 13, ""),              # AI → Digital / NFT
+    (5, 9, "certify"),        # AI → Certification
+    (6, 8, "export STL"),     # 3D Modeling → Prototyping
+    (6, 9, "certify"),        # 3D Modeling → Certification
+    (7, 8, "export STL"),     # Digital Sculpture → Prototyping
+    (7, 9, "certify"),        # Digital Sculpture → Certification
+    (7, 11, "VR"),            # Digital Sculpture → XR/VR Exhibition
+    (8, 10, ""),              # Prototyping → Physical Exhibition
+    (8, 12, "install"),       # Prototyping → Installation
+    (9, 13, ""),              # Certification → Digital / NFT
 ]
 
 
@@ -222,7 +231,7 @@ def build_svg():
         (340, 100, "Acquisition"),
         (530, 100, "Digital Processing"),
         (730, 100, "Fabrication &\nCertification"),
-        (900, 100, "Outputs"),
+        (900, 100, "Exhibition /\nOutput"),
     ]
     for cx, cy, lbl in col_labels:
         for i, part in enumerate(lbl.split("\n")):
