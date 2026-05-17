@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620">
+<rect width="960" height="620" fill="#FAFAFA"/>
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#888888" />
+  </marker>
+</defs>
+<text x="480.0" y="32.0" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#1A1A1A" text-anchor="middle" dominant-baseline="middle">Virtual-to-Physical Fabrication Workflow</text>
+<text x="480.0" y="52.0" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="normal" fill="#666666" text-anchor="middle" dominant-baseline="middle">Chapter 6 · Art Between Matter and Code · Gianpiero Moioli · Apress 2025</text>
+<text x="100.0" y="95.0" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#666666" text-anchor="middle" dominant-baseline="middle">Virtual</text>
+<text x="100.0" y="108.0" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#666666" text-anchor="middle" dominant-baseline="middle">Model</text>
+<text x="252.0" y="95.0" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#666666" text-anchor="middle" dominant-baseline="middle">Preparation</text>
+<text x="450.0" y="95.0" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#666666" text-anchor="middle" dominant-baseline="middle">Fabrication</text>
+<text x="680.0" y="95.0" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#666666" text-anchor="middle" dominant-baseline="middle">Post-</text>
+<text x="680.0" y="108.0" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#666666" text-anchor="middle" dominant-baseline="middle">Processing</text>
+<text x="870.0" y="95.0" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#666666" text-anchor="middle" dominant-baseline="middle">Output</text>
+<line x1="174.0" y1="182.5" x2="178.0" y2="262.5" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="174.0" y1="339.1" x2="178.0" y2="275.9" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="252.0" y1="294.0" x2="252.0" y2="396.0" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="281.8" y1="396.0" x2="420.2" y2="199.0" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="326.0" y1="412.2" x2="376.0" y2="297.8" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="326.0" y1="417.3" x2="376.0" y2="377.7" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="326.0" y1="421.8" x2="376.0" y2="448.2" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="524.0" y1="179.9" x2="606.0" y2="265.1" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="524.0" y1="289.0" x2="606.0" y2="271.0" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="524.0" y1="184.6" x2="606.0" y2="350.4" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="524.0" y1="293.6" x2="606.0" y2="356.4" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="524.0" y1="374.2" x2="606.0" y2="360.8" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="524.0" y1="445.3" x2="606.0" y2="364.7" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="480.8" y1="199.0" x2="649.2" y2="426.0" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="754.0" y1="270.0" x2="796.0" y2="270.0" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="754.0" y1="354.3" x2="796.0" y2="275.7" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="754.0" y1="360.0" x2="796.0" y2="360.0" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="754.0" y1="438.7" x2="796.0" y2="281.3" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<line x1="754.0" y1="365.7" x2="796.0" y2="444.3" stroke="#888888" stroke-width="1.4" marker-end="url(#arr)" />
+<rect x="26.0" y="151.0" width="148" height="48" rx="8" ry="8" fill="#4A7FA5" opacity="0.93" stroke="#4A7FA5" stroke-width="1.5"/>
+<text x="100.0" y="168.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">3D Model</text>
+<text x="100.0" y="184.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">(Blender)</text>
+<rect x="26.0" y="321.0" width="148" height="48" rx="8" ry="8" fill="#4A7FA5" opacity="0.93" stroke="#4A7FA5" stroke-width="1.5"/>
+<text x="100.0" y="338.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Scan / SfM</text>
+<text x="100.0" y="354.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">(Photogrammetry)</text>
+<rect x="178.0" y="246.0" width="148" height="48" rx="8" ry="8" fill="#6BAB6B" opacity="0.93" stroke="#6BAB6B" stroke-width="1.5"/>
+<text x="252.0" y="263.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Mesh Repair</text>
+<text x="252.0" y="279.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">(3D Print Toolbox)</text>
+<rect x="178.0" y="396.0" width="148" height="48" rx="8" ry="8" fill="#6BAB6B" opacity="0.93" stroke="#6BAB6B" stroke-width="1.5"/>
+<text x="252.0" y="413.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Slicing</text>
+<text x="252.0" y="429.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">(Anycubic / Cura)</text>
+<rect x="376.0" y="151.0" width="148" height="48" rx="8" ry="8" fill="#C9623F" opacity="0.93" stroke="#C9623F" stroke-width="1.5"/>
+<text x="450.0" y="168.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">FDM</text>
+<text x="450.0" y="184.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">(PLA / PETG)</text>
+<rect x="376.0" y="266.0" width="148" height="48" rx="8" ry="8" fill="#C9623F" opacity="0.93" stroke="#C9623F" stroke-width="1.5"/>
+<text x="450.0" y="283.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">SLA/MSLA</text>
+<text x="450.0" y="299.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">(Resin)</text>
+<rect x="376.0" y="351.0" width="148" height="48" rx="8" ry="8" fill="#C9623F" opacity="0.93" stroke="#C9623F" stroke-width="1.5"/>
+<text x="450.0" y="368.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">SLS</text>
+<text x="450.0" y="384.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">(Nylon)</text>
+<rect x="376.0" y="426.0" width="148" height="48" rx="8" ry="8" fill="#C9623F" opacity="0.93" stroke="#C9623F" stroke-width="1.5"/>
+<text x="450.0" y="443.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">WASP Ceramic</text>
+<text x="450.0" y="459.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">(Clay / Porcelain)</text>
+<rect x="606.0" y="246.0" width="148" height="48" rx="8" ry="8" fill="#4A9C9C" opacity="0.93" stroke="#4A9C9C" stroke-width="1.5"/>
+<text x="680.0" y="263.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Support Removal</text>
+<text x="680.0" y="279.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">&amp; Sanding</text>
+<rect x="606.0" y="336.0" width="148" height="48" rx="8" ry="8" fill="#4A9C9C" opacity="0.93" stroke="#4A9C9C" stroke-width="1.5"/>
+<text x="680.0" y="353.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Manual Finishing</text>
+<text x="680.0" y="369.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">&amp; Painting</text>
+<rect x="606.0" y="426.0" width="148" height="48" rx="8" ry="8" fill="#4A9C9C" opacity="0.93" stroke="#4A9C9C" stroke-width="1.5"/>
+<text x="680.0" y="443.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Assembly</text>
+<text x="680.0" y="459.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">(Modular)</text>
+<rect x="796.0" y="246.0" width="148" height="48" rx="8" ry="8" fill="#7B5EA7" opacity="0.93" stroke="#7B5EA7" stroke-width="1.5"/>
+<text x="870.0" y="263.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Exhibition</text>
+<text x="870.0" y="279.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">Prototype</text>
+<rect x="796.0" y="336.0" width="148" height="48" rx="8" ry="8" fill="#7B5EA7" opacity="0.93" stroke="#7B5EA7" stroke-width="1.5"/>
+<text x="870.0" y="353.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Lost-Wax</text>
+<text x="870.0" y="369.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">Casting</text>
+<rect x="796.0" y="426.0" width="148" height="48" rx="8" ry="8" fill="#7B5EA7" opacity="0.93" stroke="#7B5EA7" stroke-width="1.5"/>
+<text x="870.0" y="443.0" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">CDM</text>
+<text x="870.0" y="459.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="middle">Certification</text>
+<rect x="36" y="562" width="360" height="48" rx="6" fill="#FFFFFF" opacity="0.9" stroke="#ddd" stroke-width="1"/>
+<text x="216.0" y="572.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="bold" fill="#666666" text-anchor="middle" dominant-baseline="middle">Legend</text>
+<rect x="48" y="581" width="10" height="10" rx="2" fill="#4A7FA5"/>
+<text x="62.0" y="586.0" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="normal" fill="#333333" text-anchor="start" dominant-baseline="middle">Virtual Model</text>
+<rect x="164" y="581" width="10" height="10" rx="2" fill="#6BAB6B"/>
+<text x="178.0" y="586.0" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="normal" fill="#333333" text-anchor="start" dominant-baseline="middle">Preparation</text>
+<rect x="280" y="581" width="10" height="10" rx="2" fill="#C9623F"/>
+<text x="294.0" y="586.0" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="normal" fill="#333333" text-anchor="start" dominant-baseline="middle">Fabrication</text>
+<rect x="48" y="597" width="10" height="10" rx="2" fill="#4A9C9C"/>
+<text x="62.0" y="602.0" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="normal" fill="#333333" text-anchor="start" dominant-baseline="middle">Post-Processing</text>
+<rect x="164" y="597" width="10" height="10" rx="2" fill="#7B5EA7"/>
+<text x="178.0" y="602.0" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="normal" fill="#333333" text-anchor="start" dominant-baseline="middle">Output</text>
+</svg>
