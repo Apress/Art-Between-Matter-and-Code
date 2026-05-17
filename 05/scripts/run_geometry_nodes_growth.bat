@@ -1,31 +1,43 @@
 @echo off
+title Chapter 5 - Procedural Sculpture Generator
+echo.
+echo  === Chapter 5 - Procedural Sculpture Generator ===
+echo.
+
 cd /d "%~dp0"
 
-set BLENDER=
+:: Find Blender
+set "BLENDER="
 for %%v in (5.1 5.0 4.4 4.3) do (
     if not defined BLENDER (
         if exist "C:\Program Files\Blender Foundation\Blender %%v\blender.exe" (
-            set BLENDER=C:\Program Files\Blender Foundation\Blender %%v\blender.exe
+            set "BLENDER=C:\Program Files\Blender Foundation\Blender %%v\blender.exe"
+            echo Blender trovato: %%v
         )
     )
 )
 
 if not defined BLENDER (
-    echo [ERROR] Blender not found.
+    echo [ERRORE] Blender non trovato.
+    echo Installa Blender 4.3-5.1 nella posizione predefinita.
+    echo.
     pause
-    exit /b 1
+    goto :eof
 )
 
-echo [geometry_nodes_growth] Creating procedural_sculpture_demo.blend ...
+echo.
+echo Esecuzione script...
 echo.
 
 "%BLENDER%" --background --python geometry_nodes_growth.py
 
 echo.
+echo -----------------------------------------
 if exist "..\models\procedural_sculpture_demo.blend" (
     echo [OK] procedural_sculpture_demo.blend creato in models/
 ) else (
-    echo [ERROR] File non creato.
+    echo [ERRORE] File non creato.
 )
+echo -----------------------------------------
 echo.
 pause
