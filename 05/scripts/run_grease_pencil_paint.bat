@@ -17,11 +17,14 @@ if not defined BLENDER (
     exit /b 1
 )
 
-echo Istruzioni:
-echo   1. Blender si apre nel workspace Scripting
-echo   2. Il file grease_pencil_video_paint.py e gia caricato
-echo   3. Premi Alt+P per avviare
-echo   4. Usa le frecce per navigare tra i frame e dipingi
-echo.
-
-"%BLENDER%" --python _launch_gp_paint.py
+:: %1 = file .blend trascinato sopra il bat (opzionale)
+if "%~1"=="" (
+    echo Nessun file .blend specificato - apro scena vuota.
+    echo Suggerimento: trascina un file .blend sopra questo bat.
+    echo.
+    "%BLENDER%" --python _launch_gp_paint.py
+) else (
+    echo File: %~1
+    echo.
+    "%BLENDER%" "%~1" --python _launch_gp_paint.py
+)
