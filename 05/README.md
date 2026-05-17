@@ -8,25 +8,46 @@
 
 | Folder | Files | Description |
 |--------|-------|-------------|
-| `scripts/` | 1 Python script + 1 .bat launcher | Hybrid Workflow diagram generator |
+| `scripts/` | 3 Python scripts + 2 .bat launchers | Workflow diagram, procedural sculpture, VSE setup |
 | `docs/` | 1 glossary + 3 artist notes | Key terms and artist profiles |
-| `images/` | 1 SVG | Reference workflow diagram |
-| `models/` | — | (see Chapter 6 for 3D scanning workflows) |
-| `media/` | — | Video links in the chapter text |
+| `images/` | 6 SVG / PNG | Workflow diagram + book figures |
+| `models/` | `procedural_sculpture_demo.blend` | Geometry Nodes sculpture (Blender 4.3+) |
+| `media/` | `0001-0488.mp4` | AI-generated video clip for VSE demo |
 
 ## Scripts
 
 | Script | Launcher | Section | Description |
 |--------|----------|---------|-------------|
 | `hybrid_workflow_diagram.py` | `run_hybrid_workflow_diagram.bat` | §5.1 | Generates the Hybrid Workflow SVG diagram |
+| `geometry_nodes_growth.py` | Open in Blender Scripting → Alt+P | §5.4.3 | Creates `procedural_sculpture_demo.blend` in models/ |
+| `blender_vse_setup.py` | `run_blender_vse_setup.bat` | §5.3.1.4.1 | Configures Blender VSE for AI video workflow |
 
-**Run:**
+**Run (Python):**
 ```bash
 python scripts/hybrid_workflow_diagram.py             # saves SVG in current folder
 python scripts/hybrid_workflow_diagram.py --output scripts/../images
 ```
 
 Or double-click `scripts/run_hybrid_workflow_diagram.bat` — saves to `images/` and opens in browser.
+
+**Run (Blender scripts):**
+1. Open Blender → Scripting workspace
+2. Open the script (`geometry_nodes_growth.py` or `blender_vse_setup.py`)
+3. Press **Alt+P** to run
+
+Or double-click `run_blender_vse_setup.bat` to launch Blender with the VSE script pre-loaded.
+
+## 3D Models
+
+| File | Section | Description |
+|------|---------|-------------|
+| `models/procedural_sculpture_demo.blend` | §5.4.3 | Procedural sculpture: noise-displaced icosphere with Geometry Nodes. Open in Blender 4.3+. Adjust **Displacement** and **Noise Scale** in the NoiseDisplacement modifier. |
+
+## Media
+
+| File | Section | Description |
+|------|---------|-------------|
+| `media/0001-0488.mp4` | §5.3.1.4.1 | AI-generated video clip (488 frames). Import into Blender VSE: **Add → Movie**. |
 
 ## Documents
 

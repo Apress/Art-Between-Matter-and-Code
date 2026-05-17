@@ -54,3 +54,68 @@ Arrows show the workflow connections; a dashed arrow marks the bidirectional fee
 ### Output file
 
 `ref_hybrid_workflow_diagram.svg` — opens in any browser or vector editor (Inkscape, Illustrator, Affinity Designer).
+
+---
+
+## `geometry_nodes_growth.py` — Procedural Sculpture
+
+**§5.4.3 · Algorithmic Growth: Toward Procedural Sculpture**
+
+Creates a procedural sculpture in Blender using Geometry Nodes:
+- **NoiseDisplacement** modifier: subdivided icosphere displaced along surface normals by a 3D noise texture
+- **InstanceGrowth** modifier (interactive only): icosphere instances scattered across the surface, simulating organic growth
+- Two exposed parameters: **Displacement** strength and **Density**
+- Warm-stone Principled BSDF material, Cycles render setup (1920×1080, 64 samples)
+
+**Run (interactive):**
+1. Open Blender → Scripting workspace
+2. Open `geometry_nodes_growth.py`
+3. Press **Alt+P** — both modifiers are built; adjust parameters in the modifier stack
+
+**Output:** `../models/procedural_sculpture_demo.blend`
+
+### Parameters (edit inside the script)
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `DISP_STRENGTH` | `0.38` | Displacement amplitude |
+| `NOISE_SCALE` | `2.8` | Noise frequency |
+| `NOISE_DETAIL` | `10.0` | Noise octaves |
+| `SUBDIV_LEVEL` | `4` | Subdivision iterations |
+| `SPIKE_DENSITY` | `12.0` | Growth instances per unit area |
+| `BASE_COLOR` | `(0.72, 0.67, 0.58, 1.0)` | Warm stone colour |
+
+### Requirements
+
+Blender 4.3 LTS or later. Uses the `ng.interface` API — not compatible with Blender 3.x.
+
+---
+
+## `blender_vse_setup.py` — Blender VSE Configuration
+
+**§5.3.1.4.1 · Mini tutorial: AI Video with MidJourney V7 and Blender 5.0**
+
+Configures Blender's Video Sequence Editor (VSE) for the AI video workflow:
+- Output format: **H.264 / MP4**, CRF 18 (high quality)
+- Resolution: **1920 × 1080**, 24 fps
+- Switches to the **Video Editing** workspace automatically
+- Creates a `VSE_Workflow_Instructions` text block inside Blender with the full step-by-step guide
+
+**Run:**
+1. Double-click `run_blender_vse_setup.bat` — Blender opens with the script pre-loaded in Scripting
+2. Press **Alt+P** — render settings are applied and workspace switches to Video Editing
+3. Add clips: **Add → Movie**
+4. Export: **Render → Render Animation** (`Ctrl+F12`)
+
+**Or from the Scripting workspace:** open `blender_vse_setup.py` and press **Alt+P**.
+
+### What it sets up
+
+| Setting | Value |
+|---------|-------|
+| Container | MP4 |
+| Codec | H.264 |
+| Quality (CRF) | 18 (near-lossless) |
+| Resolution | 1920 × 1080 |
+| Frame rate | 24 fps |
+| Workspace | Video Editing |
